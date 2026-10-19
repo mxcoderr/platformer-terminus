@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var SPEED = 1000.0
 @export var JUMP_VELOCITY = -2500.0
+@export var HEALTH = 1
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -23,6 +24,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+#	Handles the player animations
 	if velocity.x != 0:
 		animated_sprite.play("player walk")
 		animated_sprite.flip_h = direction < 0
@@ -31,6 +33,9 @@ func _physics_process(delta: float) -> void:
 		
 	if velocity.y != 0:
 		animated_sprite.play("player jump")
+		
+	if HEALTH < 1:
+		animated_sprite.play("player death")
 
 func apply_config(config) -> void:
 	gravity_coefficient = config.gravity_coefficient
