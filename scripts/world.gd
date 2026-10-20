@@ -7,7 +7,8 @@ var player: Node2D
 const COIN = preload("res://scenes/coin.tscn")
 
 func _ready() -> void:
-	rng.randomize()
+	rng.set_seed(0)
+	rng.randi()
 	player = get_node("%Player")
 	last_pos = config.spawn.exit_pos
 	generate_one()
