@@ -5,6 +5,7 @@ var rng := RandomNumberGenerator.new()
 var last_pos: Vector2
 var player: Node2D
 const COIN = preload("res://scenes/coin.tscn")
+const ZOMBIE_MALE = preload("res://scenes/zombie_male.tscn")
 
 func _ready() -> void:
 	rng.set_seed(0)
@@ -43,9 +44,13 @@ func generate_one():
 		plat.position = last_pos + Vector2(direction_x, direction_y)
 		add_child(plat)
 		
-		if rng.randi() % 5 == 0:
+		if rng.randi() % (int)(1 / $"..".coin_chance) == 0:
 			var coin = COIN.instantiate()
 			coin.position = Vector2(200, -60)
 			plat.add_child(coin)
+		elif rng.randi() % (int)(1 / $"..".zombie_chance) == 0:
+			var zombie_male = ZOMBIE_MALE.instantiate()
+			zombie_male.position = Vector2(200, -60)
+			plat.add_child(zombie_male)
 		
 		last_pos = plat.position

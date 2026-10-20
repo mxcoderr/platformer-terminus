@@ -11,6 +11,9 @@ extends Node2D
 @export var platforms: Array[PackedScene]
 @export var spawn: Node2D # Start platform
 
+var coin_chance = 0.4
+var zombie_chance = 0.1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var player = $Player

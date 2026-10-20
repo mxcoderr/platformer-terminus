@@ -60,7 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://b1ihp4w3xeur6" path="res://assets/knight/Attack (10).png" id="21_o8oq8"]
 [ext_resource type="Texture2D" uid="uid://d2jvwwlvlpxqn" path="res://assets/knight/Walk (10).png" id="21_qouja"]
 [ext_resource type="Texture2D" uid="uid://ducf316lrttnv" path="res://assets/world/Tilesets/Floor.png" id="32_wljb1"]
-[ext_resource type="Script" uid="uid://dvcdadcgalx5e" path="res://scripts/follow.gd" id="33_v2yb1"]
+[ext_resource type="Script" uid="uid://dvcdadcgalx5e" path="res://scenes/follow.gd" id="33_v2yb1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
 shader = ExtResource("5_pf7vy")
@@ -403,7 +403,7 @@ visible = false
 
 [node name="Player" type="CharacterBody2D" parent="Level" unique_id=734645926]
 unique_name_in_owner = true
-position = Vector2(1595, 1517)
+position = Vector2(2092, 996)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 script = ExtResource("1_lnu2h")
@@ -411,8 +411,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Level/Player" unique_id=452032685]
 sprite_frames = SubResource("SpriteFrames_ostoq")
-animation = &"player attack"
-frame_progress = 0.34781948
+animation = &"player idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player" unique_id=817580666]
 position = Vector2(-8, 54)
