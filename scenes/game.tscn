@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://bp7xq1h6lq27p" path="res://scenes/plat_03.tscn" id="4_i4re6"]
 [ext_resource type="Texture2D" uid="uid://c1bygblht6qvl" path="res://assets/knight/Idle (3).png" id="4_kvuet"]
 [ext_resource type="Texture2D" uid="uid://dj1cmq7c8ekr4" path="res://assets/knight/Dead (2).png" id="5_oaba0"]
+[ext_resource type="Shader" uid="uid://unlgqv58x3q8" path="res://shader/background.gdshader" id="5_pf7vy"]
 [ext_resource type="Texture2D" uid="uid://dmr0qrfo4nlpv" path="res://assets/knight/Idle (4).png" id="5_trtic"]
 [ext_resource type="Texture2D" uid="uid://dt502bbmdhkln" path="res://assets/knight/Dead (3).png" id="6_458eo"]
+[ext_resource type="Texture2D" uid="uid://deww7sdixpsai" path="res://assets/world/SkyRuins/Background/Sky_Ruins_2D_Platformer_Tileset_Background - Layer 00.png" id="6_i4re6"]
 [ext_resource type="Texture2D" uid="uid://q7noqdikt44d" path="res://assets/knight/Idle (5).png" id="6_ir15t"]
 [ext_resource type="Script" uid="uid://t10768ixed4f" path="res://scripts/spawn.gd" id="6_pf7vy"]
 [ext_resource type="Texture2D" uid="uid://biy6a8v644pns" path="res://assets/knight/Idle (6).png" id="7_ca42v"]
@@ -26,30 +28,43 @@
 [ext_resource type="Texture2D" uid="uid://dlwoyljw3hrqt" path="res://assets/knight/Idle (10).png" id="11_1kice"]
 [ext_resource type="Texture2D" uid="uid://bvhceudnlev00" path="res://assets/knight/Dead (8).png" id="11_i4re6"]
 [ext_resource type="Texture2D" uid="uid://d25ucn1ok1l47" path="res://assets/knight/Walk (1).png" id="12_37s47"]
+[ext_resource type="Texture2D" uid="uid://dp6gyf4qge0vy" path="res://assets/knight/Attack (1).png" id="12_bnuda"]
 [ext_resource type="Texture2D" uid="uid://dk1d5xf20j2ve" path="res://assets/knight/Dead (9).png" id="12_pf7vy"]
 [ext_resource type="Texture2D" uid="uid://dqyh55m3qwdrg" path="res://assets/knight/Jump (1).png" id="12_wljb1"]
+[ext_resource type="Texture2D" uid="uid://b5utsru0528j0" path="res://assets/knight/Attack (2).png" id="13_0rmfi"]
 [ext_resource type="Texture2D" uid="uid://cxw14m54ajknl" path="res://assets/knight/Walk (2).png" id="13_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://jrcr0fxdx1ak" path="res://assets/knight/Dead (10).png" id="13_o8ni1"]
 [ext_resource type="Texture2D" uid="uid://bvq5ahjl412dd" path="res://assets/knight/Jump (2).png" id="13_v2yb1"]
 [ext_resource type="Texture2D" uid="uid://dpakxfljhgcyx" path="res://assets/knight/Walk (3).png" id="14_e1j6l"]
 [ext_resource type="Texture2D" uid="uid://br23u77rhpdn8" path="res://assets/knight/Jump (3).png" id="14_js0lu"]
+[ext_resource type="Texture2D" uid="uid://b7udfgq23tul5" path="res://assets/knight/Attack (3).png" id="14_xbak0"]
+[ext_resource type="Texture2D" uid="uid://cib4xxw0lwgx2" path="res://assets/knight/Attack (4).png" id="15_3x28f"]
 [ext_resource type="Texture2D" uid="uid://dc233qi0j8lqg" path="res://assets/knight/Jump (4).png" id="15_gxtfn"]
 [ext_resource type="Texture2D" uid="uid://c4lmlei8dvrup" path="res://assets/knight/Walk (4).png" id="15_pl11u"]
 [ext_resource type="Texture2D" uid="uid://bnwe4mb8c4dj2" path="res://assets/knight/Walk (5).png" id="16_bhx41"]
+[ext_resource type="Texture2D" uid="uid://drnoibdxwih4i" path="res://assets/knight/Attack (5).png" id="16_l6q63"]
 [ext_resource type="Texture2D" uid="uid://dtkvb22dkfd62" path="res://assets/knight/Jump (5).png" id="16_twgab"]
 [ext_resource type="Texture2D" uid="uid://c0evfbfrmmjpk" path="res://assets/knight/Jump (6).png" id="17_02fa5"]
+[ext_resource type="Texture2D" uid="uid://cpcg4uo4ncjdi" path="res://assets/knight/Attack (6).png" id="17_mmvbu"]
 [ext_resource type="Texture2D" uid="uid://b78fiohxha3u3" path="res://assets/knight/Walk (6).png" id="17_qnb83"]
 [ext_resource type="Texture2D" uid="uid://co170ev83q2jc" path="res://assets/knight/Jump (7).png" id="18_nepv3"]
 [ext_resource type="Texture2D" uid="uid://bn2ojdokyc1qj" path="res://assets/knight/Walk (7).png" id="18_sww3w"]
+[ext_resource type="Texture2D" uid="uid://ccfhx0wx7r8fg" path="res://assets/knight/Attack (7).png" id="18_weeiq"]
 [ext_resource type="Texture2D" uid="uid://cqfl2gvkrxqul" path="res://assets/knight/Jump (8).png" id="19_7025r"]
 [ext_resource type="Texture2D" uid="uid://brcws382sr8u0" path="res://assets/knight/Walk (8).png" id="19_suyxu"]
+[ext_resource type="Texture2D" uid="uid://bp1j4sm7pnrc1" path="res://assets/knight/Attack (8).png" id="19_uxocx"]
+[ext_resource type="Texture2D" uid="uid://boplbspx0fu3a" path="res://assets/knight/Attack (9).png" id="20_7nv0b"]
 [ext_resource type="Texture2D" uid="uid://cer4b6l48qevg" path="res://assets/knight/Jump (9).png" id="20_m4url"]
 [ext_resource type="Texture2D" uid="uid://ddwicu0lnyvnc" path="res://assets/knight/Walk (9).png" id="20_sgl2t"]
 [ext_resource type="Texture2D" uid="uid://dqgdcgrerulnq" path="res://assets/knight/Jump (10).png" id="21_8ool0"]
+[ext_resource type="Texture2D" uid="uid://b1ihp4w3xeur6" path="res://assets/knight/Attack (10).png" id="21_o8oq8"]
 [ext_resource type="Texture2D" uid="uid://d2jvwwlvlpxqn" path="res://assets/knight/Walk (10).png" id="21_qouja"]
 [ext_resource type="Texture2D" uid="uid://ducf316lrttnv" path="res://assets/world/Tilesets/Floor.png" id="32_wljb1"]
 [ext_resource type="Script" uid="uid://dvcdadcgalx5e" path="res://scripts/follow.gd" id="33_v2yb1"]
 [ext_resource type="PackedScene" uid="uid://dr173jkxymms7" path="res://scenes/coin.tscn" id="49_rm0al"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
+shader = ExtResource("5_pf7vy")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v2yb1"]
 texture = ExtResource("32_wljb1")
@@ -103,7 +118,7 @@ texture = ExtResource("32_wljb1")
 8:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -48.54475, -64, -48.168427, -64, 38.007904, -26.153957, 32.739483, 3.1986847, 39.513165, 38.57238, 32.739483, 64, 39.136856, 64, -23.331573)
 16:17/size_in_atlas = Vector2i(8, 7)
 16:17/0 = 0
-16:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(60.586853, -49.29738, -64, -48.168427, -64, 38.007904, -36.126312, 39.889496, -1.1289368, 24.46054, 19.944733, 0.3763275, 51.178955, -4.1394653, 64, -23.331573)
+16:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -48.064392, -64, -48.168427, -64, 38.007904, -36.126312, 39.889496, -1.1289368, 24.46054, 19.944733, 0.3763275, 51.178955, -4.1394653, 64, -23.331573)
 24:16/size_in_atlas = Vector2i(8, 8)
 24:16/0 = 0
 24:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64.18733, -63.360878, 64.18732, -62.25895, 65.84022, 64.462814, -66.94215, 65.56474)
@@ -167,6 +182,41 @@ region = Rect2(0, 0, 587, 707)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ostoq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_bnuda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_0rmfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xbak0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3x28f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_l6q63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_mmvbu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_weeiq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_uxocx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7nv0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_o8oq8")
+}],
+"loop": 1,
+"name": &"player attack",
+"speed": 11.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_0sl42")
@@ -319,6 +369,17 @@ script = ExtResource("1_js0lu")
 platforms = Array[PackedScene]([ExtResource("2_8qswn"), ExtResource("3_rm0al"), ExtResource("4_i4re6")])
 spawn = NodePath("World/Spawn")
 
+[node name="Background" type="CanvasLayer" parent="Level" unique_id=1284140728]
+layer = -4
+
+[node name="BackgroundImage" type="TextureRect" parent="Level/Background" unique_id=1743733758]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ostoq")
+offset_left = -1.0
+offset_right = 1333.0
+offset_bottom = 750.0
+texture = ExtResource("6_i4re6")
+
 [node name="World" type="Node2D" parent="Level" unique_id=1720226140]
 position = Vector2(0, 1)
 script = ExtResource("2_oaba0")
@@ -345,6 +406,7 @@ visible = false
 position = Vector2(1006, 1218)
 
 [node name="Player" type="CharacterBody2D" parent="Level" unique_id=734645926]
+unique_name_in_owner = true
 position = Vector2(1595, 1517)
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
@@ -353,16 +415,14 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Level/Player" unique_id=452032685]
 sprite_frames = SubResource("SpriteFrames_ostoq")
-animation = &"player death"
-frame = 7
-frame_progress = 0.111712754
+animation = &"player attack"
+frame_progress = 0.34781948
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player" unique_id=817580666]
 position = Vector2(-8, 54)
 shape = SubResource("CapsuleShape2D_ostoq")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2022235408 node_paths=PackedStringArray("target")]
-visible = false
 position = Vector2(1599, 1548)
 scale = Vector2(0.5, 0.5)
 zoom = Vector2(0.3, 0.3)

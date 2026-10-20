@@ -7,16 +7,16 @@ var player: Node2D
 
 func _ready() -> void:
 	rng.randomize()
-	player = get_node("../Player")
+	player = get_node("%Player")
 	last_pos = config.spawn.exit_pos
 	generate_one()
 
 func _process(_delta):
-	# When player gets in range call generate_one, to generate a new platform
+#	When player gets in range call generate_one, to generate a new platform
 	if player.position.x > last_pos.x - 2048:
 		generate_one()
 
-	# Remove platform when player gets further away to reduce lag on long games
+#	Remove platform when player gets further away to reduce lag on long games
 	for child in get_children():
 		if child is Node2D and child != config.spawn:
 			if child.position.x < player.position.x - 4096:
