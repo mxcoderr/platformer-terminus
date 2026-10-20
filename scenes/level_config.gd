@@ -12,7 +12,7 @@ extends Node2D
 @export var spawn: Node2D # Start platform
 
 var coin_chance = 0.4
-var zombie_chance = 0.1
+var zombie_chance = 0.3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

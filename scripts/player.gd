@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var SPEED: float = 1000.0
 @export var JUMP_VELOCITY: float = -2500.0
 @export var HEALTH: int = 1
-@export var ATTACK: bool = false
+var attack: bool = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -22,21 +22,25 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
+	
+	if !attack and Input.is_key_pressed(KEY_ENTER):
+		animated_sprite.play("player attack")
+	
 	move_and_slide()
 	
 #	Handles the player animations
-	if velocity.x != 0:
-		animated_sprite.play("player walk")
-		animated_sprite.flip_h = direction < 0
-	else:
-		animated_sprite.play("player idle")
-		
-	if velocity.y != 0:
-		animated_sprite.play("player jump")
-		
-	if HEALTH < 1:
-		animated_sprite.play("player death")
+	if !attack:
+		if velocity.x != 0:
+			animated_sprite.play("player walk")
+			animated_sprite.flip_h = direction < 0
+		else:
+			animated_sprite.play("player idle")
+			
+		if velocity.y != 0:
+			animated_sprite.play("player jump")
+			
+		if HEALTH < 1:
+			animated_sprite.play("player death")
 
 func apply_config(config) -> void:
 	gravity_coefficient = config.gravity_coefficient
