@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dr173jkxymms7"]
+
+[ext_resource type="Script" uid="uid://blqpcinsrjk2" path="res://scripts/coin.gd" id="1_jig8b"]
+[ext_resource type="Texture2D" uid="uid://8cfyfxeknbsi" path="res://assets/world/SkyRuins/Collectable Object/Sky_Ruins_2D_Platformer_Tileset_Collectable Object - Coin 01.png" id="1_wnlwo"]
+[ext_resource type="Texture2D" uid="uid://dg0coyl0o345u" path="res://assets/world/SkyRuins/Collectable Object/Sky_Ruins_2D_Platformer_Tileset_Collectable Object - Coin 02.png" id="2_jig8b"]
+[ext_resource type="Texture2D" uid="uid://ckcqxpscssfrw" path="res://assets/world/SkyRuins/Collectable Object/Sky_Ruins_2D_Platformer_Tileset_Collectable Object - Coin 03.png" id="3_xmuha"]
+[ext_resource type="Texture2D" uid="uid://b8g37d00ifbmg" path="res://assets/world/SkyRuins/Collectable Object/Sky_Ruins_2D_Platformer_Tileset_Collectable Object - Coin 04.png" id="4_kfxoj"]
+[ext_resource type="Texture2D" uid="uid://cd7xw8dygxxup" path="res://assets/world/SkyRuins/Collectable Object/Sky_Ruins_2D_Platformer_Tileset_Collectable Object - Coin 05.png" id="5_jsmju"]
+[ext_resource type="Texture2D" uid="uid://bf6jl5s3j5a4" path="res://assets/world/SkyRuins/Collectable Object/Sky_Ruins_2D_Platformer_Tileset_Collectable Object - Coin 06.png" id="6_s0mny"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kahox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wnlwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jig8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xmuha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kfxoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jsmju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s0mny")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ostoq"]
+radius = 50.159744
+
+[node name="Coin" type="Area2D" unique_id=1980635153]
+collision_mask = 2
+script = ExtResource("1_jig8b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1903764700]
+sprite_frames = SubResource("SpriteFrames_kahox")
+autoplay = "default"
+frame_progress = 0.7175231
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1924090924]
+shape = SubResource("CircleShape2D_ostoq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

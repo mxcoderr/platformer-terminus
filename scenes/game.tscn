@@ -48,7 +48,8 @@
 [ext_resource type="Texture2D" uid="uid://dqgdcgrerulnq" path="res://assets/knight/Jump (10).png" id="21_8ool0"]
 [ext_resource type="Texture2D" uid="uid://d2jvwwlvlpxqn" path="res://assets/knight/Walk (10).png" id="21_qouja"]
 [ext_resource type="Texture2D" uid="uid://ducf316lrttnv" path="res://assets/world/Tilesets/Floor.png" id="32_wljb1"]
-[ext_resource type="Script" uid="uid://dvcdadcgalx5e" path="res://scenes/follow.gd" id="33_v2yb1"]
+[ext_resource type="Script" uid="uid://dvcdadcgalx5e" path="res://scripts/follow.gd" id="33_v2yb1"]
+[ext_resource type="PackedScene" uid="uid://dr173jkxymms7" path="res://scenes/coin.tscn" id="49_rm0al"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v2yb1"]
 texture = ExtResource("32_wljb1")
@@ -319,6 +320,7 @@ platforms = Array[PackedScene]([ExtResource("2_8qswn"), ExtResource("3_rm0al"), 
 spawn = NodePath("World/Spawn")
 
 [node name="World" type="Node2D" parent="Level" unique_id=1720226140]
+position = Vector2(0, 1)
 script = ExtResource("2_oaba0")
 metadata/_edit_group_ = true
 
@@ -331,20 +333,29 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAIAAAAAAACAAAAAAAQAAA
 tile_set = SubResource("TileSet_ajtct")
 
 [node name="plat_01" parent="Level/World" unique_id=1967754518 instance=ExtResource("2_8qswn")]
+visible = false
 
 [node name="plat_02" parent="Level/World" unique_id=1996705055 instance=ExtResource("3_rm0al")]
+visible = false
 
 [node name="plat_03" parent="Level/World" unique_id=1563764343 instance=ExtResource("4_i4re6")]
+visible = false
+
+[node name="Coin" parent="Level" unique_id=1980635153 instance=ExtResource("49_rm0al")]
+position = Vector2(1006, 1218)
 
 [node name="Player" type="CharacterBody2D" parent="Level" unique_id=734645926]
 position = Vector2(1595, 1517)
 scale = Vector2(0.5, 0.5)
+collision_layer = 2
 script = ExtResource("1_lnu2h")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Level/Player" unique_id=452032685]
 sprite_frames = SubResource("SpriteFrames_ostoq")
 animation = &"player death"
+frame = 7
+frame_progress = 0.111712754
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player" unique_id=817580666]
 position = Vector2(-8, 54)
