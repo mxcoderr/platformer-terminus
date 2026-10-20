@@ -4,6 +4,7 @@ extends Node2D
 var rng := RandomNumberGenerator.new()
 var last_pos: Vector2
 var player: Node2D
+const COIN = preload("res://scenes/coin.tscn")
 
 func _ready() -> void:
 	rng.randomize()
@@ -40,4 +41,10 @@ func generate_one():
 		var plat: Node2D = scene.instantiate()
 		plat.position = last_pos + Vector2(direction_x, direction_y)
 		add_child(plat)
+		
+		if rng.randi() % 5 == 0:
+			var coin = COIN.instantiate()
+			coin.position = Vector2(200, -60)
+			plat.add_child(coin)
+		
 		last_pos = plat.position
