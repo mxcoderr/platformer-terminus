@@ -1,7 +1,7 @@
 extends Area2D
 
-func _on_body_entered(body: Node2D) -> void:
-	monitoring = false
+func _on_body_entered(_body: Node2D) -> void:
+	set_deferred("monitoring", false)
 	
 	var tween = create_tween()
 	

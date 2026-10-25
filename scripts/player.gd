@@ -15,7 +15,6 @@ var gravity_coefficient = 7.5
 
 func _ready() -> void:
 	last_safe_y = global_position.y
-	print(last_safe_y)
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
@@ -42,11 +41,9 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		last_safe_y = global_position.y
-		print("Safe y: " + str(last_safe_y))
 	
 	if global_position.y > last_safe_y + DEATH_FALL_DISTANCE:
 		HEALTH = 0
-		print("Fall death triggered")
 	
 #	Handles the players death.
 	if HEALTH <= 0:
