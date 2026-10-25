@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c6rv6midg2lo2"]
 
-[ext_resource type="Script" uid="uid://xl3q5jkes7m" path="res://scenes/level_config.gd" id="1_js0lu"]
+[ext_resource type="Script" uid="uid://xl3q5jkes7m" path="res://scripts/level_config.gd" id="1_js0lu"]
 [ext_resource type="Script" uid="uid://cy8l80hgm5cjq" path="res://scripts/player.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dut8a2cpg2syr" path="res://scenes/plat_01.tscn" id="2_8qswn"]
 [ext_resource type="Texture2D" uid="uid://cndy2vntdp8pa" path="res://assets/knight/Idle (1).png" id="2_lbhrr"]
@@ -61,6 +61,16 @@
 [ext_resource type="Texture2D" uid="uid://d2jvwwlvlpxqn" path="res://assets/knight/Walk (10).png" id="21_qouja"]
 [ext_resource type="Texture2D" uid="uid://ducf316lrttnv" path="res://assets/world/Tilesets/Floor.png" id="32_wljb1"]
 [ext_resource type="Script" uid="uid://dvcdadcgalx5e" path="res://scripts/follow.gd" id="33_v2yb1"]
+[ext_resource type="Texture2D" uid="uid://sds3vqsixo55" path="res://assets/knight/JumpAttack (1).png" id="51_o8oq8"]
+[ext_resource type="Texture2D" uid="uid://dgjxgnqayokfc" path="res://assets/knight/JumpAttack (2).png" id="52_sxt1d"]
+[ext_resource type="Texture2D" uid="uid://b0xowc2nae1t2" path="res://assets/knight/JumpAttack (3).png" id="53_2iuns"]
+[ext_resource type="Texture2D" uid="uid://br528lhi6rx5" path="res://assets/knight/JumpAttack (4).png" id="54_7gkqi"]
+[ext_resource type="Texture2D" uid="uid://d2xlui4v4heec" path="res://assets/knight/JumpAttack (5).png" id="55_753oq"]
+[ext_resource type="Texture2D" uid="uid://223x53kf4hqo" path="res://assets/knight/JumpAttack (6).png" id="56_3x338"]
+[ext_resource type="Texture2D" uid="uid://chw5ghmn7kp22" path="res://assets/knight/JumpAttack (7).png" id="57_1yg85"]
+[ext_resource type="Texture2D" uid="uid://lx7uj0sytkq2" path="res://assets/knight/JumpAttack (8).png" id="58_s0g06"]
+[ext_resource type="Texture2D" uid="uid://dr8joq51n30w1" path="res://assets/knight/JumpAttack (9).png" id="59_2gnni"]
+[ext_resource type="Texture2D" uid="uid://baq1f17yd3bkx" path="res://assets/knight/JumpAttack (10).png" id="60_vgxg3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
 shader = ExtResource("5_pf7vy")
@@ -212,7 +222,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("21_o8oq8")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"player attack",
 "speed": 11.0
 }, {
@@ -247,7 +257,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_o8ni1")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"player death",
 "speed": 8.0
 }, {
@@ -319,6 +329,41 @@ animations = [{
 }],
 "loop": 1,
 "name": &"player jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("51_o8oq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_sxt1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_2iuns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_7gkqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_753oq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_3x338")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_1yg85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_s0g06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_2gnni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_vgxg3")
+}],
+"loop": 0,
+"name": &"player jump_attack",
 "speed": 8.0
 }, {
 "frames": [{
@@ -412,7 +457,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Level/Player" unique_id=452032685]
 sprite_frames = SubResource("SpriteFrames_ostoq")
-animation = &"player idle"
+animation = &"player jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player" unique_id=817580666]
 position = Vector2(-8, 54)
@@ -424,3 +469,5 @@ scale = Vector2(0.5, 0.5)
 zoom = Vector2(0.3, 0.3)
 script = ExtResource("33_v2yb1")
 target = NodePath("../Level/Player")
+
+[connection signal="animation_finished" from="Level/Player/AnimatedSprite2D" to="Level/Player" method="_on_animated_sprite_2d_animation_finished"]

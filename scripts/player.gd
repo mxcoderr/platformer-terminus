@@ -5,9 +5,10 @@ extends CharacterBody2D
 @export var HEALTH: int = 1
 @export var DEATH_FALL_DISTANCE: float = 2000
 
-var dead: bool = false
+var dead: bool = false # true for death animation
 var attack: bool = false
 var last_safe_y: float = 0.0 
+var attack_animation: String = "" # to prevent multiple attack animations at once
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -34,8 +35,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	if !attack and Input.is_key_pressed(KEY_ENTER):
-		animated_sprite.play("player attack")
+	if not attack and Input.is_action_just_pressed("attack"):
+		attack = true
+		
+		if is_on_floor():
+			attack_animation = "player attack"
+		else:
+			attack_animation = "player jump_attack"
+
+		animated_sprite.play(attack_animation)
 	
 	move_and_slide()
 	
@@ -52,16 +60,32 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("player death")
 		return
 
-#	Handles the player animations
-	if !attack:
-		if velocity.x != 0:
-			animated_sprite.play("player walk")
-			animated_sprite.flip_h = direction < 0
-		else:
-			animated_sprite.play("player idle")
-			
-		if velocity.y != 0:
+# Handles the player animations
+	if attack:
+		animated_sprite.flip_h = direction < 0
+		# End a jump attack when landing
+		if attack_animation == "player jump_attack" and is_on_floor():
+			var current_frame = animated_sprite.frame
+			attack_animation = "player attack"
+			animated_sprite.play(attack_animation)
+			animated_sprite.frame = current_frame
+		
+	elif not is_on_floor():
+		if animated_sprite.animation != "player jump":
 			animated_sprite.play("player jump")
+		animated_sprite.flip_h = direction < 0
+	elif velocity.x != 0:
+		if animated_sprite.animation != "player walk":
+			animated_sprite.play("player walk")
+		animated_sprite.flip_h = direction < 0
+	else:
+		if animated_sprite.animation != "player idle":
+			animated_sprite.play("player idle")
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite.animation == "player attack" or animated_sprite.animation == "player jump_attack":
+		attack = false
+		attack_animation = ""
 
 func apply_config(config) -> void:
 	gravity_coefficient = config.gravity_coefficient
