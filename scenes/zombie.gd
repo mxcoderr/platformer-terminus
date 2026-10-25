@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 var direction = 1.0
 var attacking = false
+var player: CharacterBody2D
 
 @onready var zombie_sprite = find_child("zombie_*_sprite", true, false)
 
@@ -31,3 +31,10 @@ func _physics_process(delta: float) -> void:
 		zombie_sprite.flip_h = direction < 0
 
 	move_and_slide()
+
+func apply_config(player_node: CharacterBody2D) -> void:
+	player = player_node
+
+func _on_collision_body_entered(body: Node2D) -> void:
+	if body == player:
+		body.HEALTH -= 1

@@ -205,6 +205,10 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2c65t"]
+radius = 116.66687
+height = 413.33374
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_frdhy"]
 radius = 110.0
 height = 415.0
@@ -216,9 +220,14 @@ metadata/_edit_group_ = true
 
 [node name="zombie_female_sprite" type="AnimatedSprite2D" parent="." unique_id=1758112419]
 sprite_frames = SubResource("SpriteFrames_kdytw")
-animation = &"walk"
-frame = 9
-frame_progress = 0.9721541
+animation = &"attack"
+
+[node name="Collision" type="Area2D" parent="." unique_id=1876182730]
+position = Vector2(-15.000205, 54.999794)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" unique_id=2001555220]
+shape = SubResource("CapsuleShape2D_2c65t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1725541236]
 position = Vector2(-15.000204, 54.999794)
@@ -227,3 +236,5 @@ shape = SubResource("CapsuleShape2D_frdhy")
 [node name="FloorChecker" type="RayCast2D" parent="." unique_id=620078340]
 position = Vector2(100, 10)
 target_position = Vector2(0, 300)
+
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]

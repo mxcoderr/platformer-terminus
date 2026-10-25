@@ -11,7 +11,7 @@ const ZOMBIE_FEMALE = preload("res://scenes/zombie_female.tscn")
 func _ready() -> void:
 	rng.set_seed(0)
 	rng.randi()
-	player = get_node("%Player")
+	player = config.get_node("Player")
 	last_pos = config.spawn.exit_pos
 	generate_one()
 
@@ -68,6 +68,7 @@ func generate_one():
 				zombie = ZOMBIE_FEMALE.instantiate()
 				print("zombie female placed")
 			zombie.position = Vector2(200, -60)
+			zombie.apply_config(player)
 			plat.add_child(zombie)
 		
 		print("\n----------------\n")

@@ -3,14 +3,26 @@ extends CharacterBody2D
 @export var SPEED: float = 1000.0
 @export var JUMP_VELOCITY: float = -2500.0
 @export var HEALTH: int = 1
+@export var DEATH_FALL_DISTANCE: float = 2000
+
+var dead: bool = false
 var attack: bool = false
+var last_safe_y: float = 0.0 
 
 @onready var animated_sprite = $AnimatedSprite2D
 
 var gravity_coefficient = 7.5
 
+func _ready() -> void:
+	last_safe_y = global_position.y
+	print(last_safe_y)
+
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
+
+#	Ensures inputs are deactivated once player is dead.
+	if dead:
+		return
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta * gravity_coefficient
@@ -28,6 +40,21 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	if is_on_floor():
+		last_safe_y = global_position.y
+		print("Safe y: " + str(last_safe_y))
+	
+	if global_position.y > last_safe_y + DEATH_FALL_DISTANCE:
+		HEALTH = 0
+		print("Fall death triggered")
+	
+#	Handles the players death.
+	if HEALTH <= 0:
+		if not dead:
+			dead = true
+			animated_sprite.play("player death")
+		return
+
 #	Handles the player animations
 	if !attack:
 		if velocity.x != 0:
@@ -38,9 +65,6 @@ func _physics_process(delta: float) -> void:
 			
 		if velocity.y != 0:
 			animated_sprite.play("player jump")
-			
-		if HEALTH < 1:
-			animated_sprite.play("player death")
 
 func apply_config(config) -> void:
 	gravity_coefficient = config.gravity_coefficient
