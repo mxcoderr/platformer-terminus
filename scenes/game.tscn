@@ -72,6 +72,7 @@
 [ext_resource type="Texture2D" uid="uid://lx7uj0sytkq2" path="res://assets/knight/JumpAttack (8).png" id="58_s0g06"]
 [ext_resource type="Texture2D" uid="uid://dr8joq51n30w1" path="res://assets/knight/JumpAttack (9).png" id="59_2gnni"]
 [ext_resource type="Texture2D" uid="uid://baq1f17yd3bkx" path="res://assets/knight/JumpAttack (10).png" id="60_vgxg3"]
+[ext_resource type="PackedScene" uid="uid://dnc7x8lp4vvt7" path="res://scenes/elixir.tscn" id="73_2iuns"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
 shader = ExtResource("5_pf7vy")
@@ -264,7 +265,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"player death",
-"speed": 8.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -472,7 +473,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Level/Player" unique_id=452032685]
 sprite_frames = SubResource("SpriteFrames_ostoq")
-animation = &"player jump"
+animation = &"player death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player" unique_id=817580666]
 position = Vector2(-8, 54)
@@ -484,5 +485,8 @@ scale = Vector2(0.5, 0.5)
 zoom = Vector2(0.3, 0.3)
 script = ExtResource("33_v2yb1")
 target = NodePath("../Level/Player")
+
+[node name="Elixir" parent="." unique_id=1667585476 instance=ExtResource("73_2iuns")]
+position = Vector2(1025, 1195)
 
 [connection signal="animation_finished" from="Level/Player/AnimatedSprite2D" to="Level/Player" method="_on_animated_sprite_2d_animation_finished"]

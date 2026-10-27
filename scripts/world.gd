@@ -7,6 +7,7 @@ var player: Node2D
 const COIN = preload("res://scenes/coin.tscn")
 const ZOMBIE_MALE = preload("res://scenes/zombie_male.tscn")
 const ZOMBIE_FEMALE = preload("res://scenes/zombie_female.tscn")
+var ELIXIR = preload("res://scenes/elixir.tscn")
 
 func _ready() -> void:
 	rng.set_seed(0)
@@ -44,33 +45,42 @@ func generate_one():
 		var plat: Node2D = scene.instantiate()
 		plat.position = last_pos + Vector2(direction_x, direction_y)
 		add_child(plat)
-		
-		var die = rng.randi() % 100
-		var coin_threshold = $"..".coin_chance * 100
-		var zombie_threshold = coin_threshold + $"..".zombie_chance * 100
-		
-		print("die = ", die)
-		print("coin_threshold = ", coin_threshold)
-		print("zombie_threshold = ", zombie_threshold)
-		
-		if die < coin_threshold:
-			var coin = COIN.instantiate()
-			coin.position = Vector2(200, -60)
-			plat.add_child(coin)
-			
-			print("coin placed")
-		elif die < zombie_threshold:
-			var zombie
-			if(rng.randi() % 2 == 0):
-				zombie = ZOMBIE_MALE.instantiate()
-				print("zombie male placed")
-			else:
-				zombie = ZOMBIE_FEMALE.instantiate()
-				print("zombie female placed")
-			zombie.position = Vector2(200, -60)
-			zombie.apply_config(player)
-			plat.add_child(zombie)
-		
-		print("\n----------------\n")
-		
 		last_pos = plat.position
+		
+		generate_placeables(plat)
+
+# Places coins, enemies and elixirs on the platform randomly
+func generate_placeables(plat):
+	var die = rng.randi() % 100
+	var coin_threshold = $"..".coin_chance * 100
+	var zombie_threshold = coin_threshold + $"..".zombie_chance * 100
+	var elixir_threshold = zombie_threshold + $"..".elixir_chance * 100
+	
+	#print("die = ", die)
+	#print("coin_threshold = ", coin_threshold)
+	#print("zombie_threshold = ", zombie_threshold)
+	#print("elixir_threshold = ", elixir_threshold)
+	
+	if die < coin_threshold:
+		var coin = COIN.instantiate()
+		coin.position = Vector2(200, -60)
+		plat.add_child(coin)
+
+		#print("coin placed")
+	elif die < zombie_threshold:
+		var zombie
+		if(rng.randi() % 2 == 0):
+			zombie = ZOMBIE_MALE.instantiate()
+			#print("zombie male placed")
+		else:
+			zombie = ZOMBIE_FEMALE.instantiate()
+			#print("zombie female placed")
+		zombie.position = Vector2(200, -60)
+		zombie.apply_config(player)
+		plat.add_child(zombie)
+	elif die < elixir_threshold:
+		var elixir = ELIXIR.instantiate()
+		elixir.position = Vector2(200, -60)
+		plat.add_child(elixir)
+
+	#print("\n----------------\n")
