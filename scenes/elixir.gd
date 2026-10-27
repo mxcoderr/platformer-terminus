@@ -1,5 +1,8 @@
 extends Area2D
 
+signal collected(type: int)
+
+@export var game_world: Node2D
 var type: LevelConfig.ElixirType
 
 var idle_tween: Tween
@@ -12,8 +15,17 @@ func _ready() -> void:
 	idle_tween.tween_property(self, "position:y", -20.0, 1.0).as_relative()
 	idle_tween.tween_property(self, "position:y", 20.0, 1.0).as_relative()
 
+func initialize(givenType: LevelConfig.ElixirType):
+	type = givenType
+	if type == 1:
+		$Texture.modulate = Color.GREEN
+	if type == 2:
+		$Texture.modulate = Color.BLUE
+	#print("Got a type : ", type)
+
 func _on_body_entered(_body: Node2D) -> void:
-	print("Collect elixir")
+	collected.emit(type)
+	
 	if idle_tween:
 		idle_tween.kill()
 	
@@ -29,10 +41,4 @@ func _on_body_entered(_body: Node2D) -> void:
 	tween.tween_property(self, "modulate:a", 0, 1)
 	
 	tween.set_parallel(false)
-	tween.tween_callback(queue_free)	
-
-func initialize(givenType: LevelConfig.ElixirType):
-	type = givenType
-	#if type == 1:
-		#$Texture.modulate = 
-	print("Got a type : ", type)
+	tween.tween_callback(queue_free)

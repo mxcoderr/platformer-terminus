@@ -14,12 +14,12 @@ class_name LevelConfig
 
 enum ElixirType {JUMP, MOVE, GRAVITY}
 
-var coin_chance = 0.1
+var coin_chance = 0.5
 var zombie_chance = 0.1
 #var jump_elixir_chance = 0.1
 #var movement_elixir_chance = 0.1
 #var gravity_elixir_chance = 0.1
-var elixir_chance = 0.5
+var elixir_chance = 0.1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameWorld
 
 @onready var config: Node = get_node("..")
 var rng := RandomNumberGenerator.new()
@@ -9,13 +10,43 @@ const ZOMBIE_MALE = preload("res://scenes/zombie_male.tscn")
 const ZOMBIE_FEMALE = preload("res://scenes/zombie_female.tscn")
 var ELIXIR = preload("res://scenes/elixir.tscn")
 
+var active_elixirs: Array[bool]
+var placed_elixirs: Array[bool]
+var movement_elixir_factor = 1.5
+
 func _ready() -> void:
 	rng.set_seed(0)
+	active_elixirs.resize(config.ElixirType.values().size())
+	active_elixirs.fill(false)
+	
+	placed_elixirs.resize(config.ElixirType.values().size())
+	placed_elixirs.fill(false)
+	
+	print("active_elixirs : ", active_elixirs)
+	print("SPEED : ", $"../Player".SPEED)
+	
+	#print("active_elixirs : ", active_elixirs)
 	#rng.randi()
 	#rng = config.rng
 	player = config.get_node("Player")
 	last_pos = config.spawn.exit_pos
 	generate_one()
+
+func _on_elixir_activated(elixir_index: int) -> void:
+	active_elixirs[elixir_index] = not active_elixirs[elixir_index]
+	
+	print("Collected elixir of type ", elixir_index)
+	print("active_elixirs : ", active_elixirs)
+	
+	if elixir_index == 2:
+		if active_elixirs[2]:
+			$"../Player".SPEED *= movement_elixir_factor
+		else:
+			$"../Player".SPEED /= movement_elixir_factor
+	
+	print("SPEED : ", $"../Player".SPEED)
+	#print("min_horizontal : ", config.min_horizontal)
+	#print("max_horizontal : ", config.max_horizontal)
 
 func _process(_delta):
 #	When player gets in range call generate_one, to generate a new platform
@@ -82,11 +113,29 @@ func generate_placeables(plat):
 	elif die < elixir_threshold:
 		var elixir = ELIXIR.instantiate()
 		var elixir_types = config.ElixirType.values()
-		var elixir_type: LevelConfig.ElixirType = elixir_types[rng.randi() % elixir_types.size()]
+		#var elixir_type: LevelConfig.ElixirType = elixir_types[rng.randi() % elixir_types.size()]
 		#print(elixir_type)
+		var elixir_type = rng.randi() % elixir_types.size()
 		elixir.initialize(elixir_type)
+		
+		elixir.collected.connect(_on_elixir_activated)
 		
 		elixir.position = Vector2(200, -60)
 		plat.add_child(elixir)
+		
+		placed_elixirs[elixir_type] = not placed_elixirs[elixir_type]
+		
+		#print("Placing elixir of type ", elixir_type)
+		if elixir_type == 2:
+			if placed_elixirs[2]:
+				#print("Increasing the gap between platforms...")
+				$"..".min_horizontal *= movement_elixir_factor
+				$"..".max_horizontal *= movement_elixir_factor
+			else:
+				#print("Decreasing the gap between platforms...")
+				$"..".min_horizontal /= movement_elixir_factor
+				$"..".max_horizontal /= movement_elixir_factor
+		print("min_horizontal : ", $"..".min_horizontal)
+		print("max_horizontal : ", $"..".max_horizontal)
 
 	#print("\n----------------\n")
