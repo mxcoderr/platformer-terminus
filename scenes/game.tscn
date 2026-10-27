@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xl3q5jkes7m" path="res://scripts/level_config.gd" id="1_js0lu"]
 [ext_resource type="Script" uid="uid://cy8l80hgm5cjq" path="res://scripts/player.gd" id="1_lnu2h"]
+[ext_resource type="Script" uid="uid://ceqprewuvdr0w" path="res://scripts/game_manager.gd" id="1_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://dut8a2cpg2syr" path="res://scenes/plat_01.tscn" id="2_8qswn"]
 [ext_resource type="Texture2D" uid="uid://cndy2vntdp8pa" path="res://assets/knight/Idle (1).png" id="2_lbhrr"]
 [ext_resource type="Script" uid="uid://bdsh6ncbihau0" path="res://scripts/world.gd" id="2_oaba0"]
@@ -74,6 +75,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
 shader = ExtResource("5_pf7vy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ostoq"]
+font_size = 32
+font_color = Color(0.8627451, 0.80784315, 0.23529412, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v2yb1"]
 texture = ExtResource("32_wljb1")
@@ -408,6 +413,10 @@ height = 524.0
 
 [node name="Game" type="Node2D" unique_id=650088776]
 
+[node name="GameManager" type="Node" parent="." unique_id=135517712]
+unique_name_in_owner = true
+script = ExtResource("1_sxt1d")
+
 [node name="Level" type="Node2D" parent="." unique_id=246386792 node_paths=PackedStringArray("spawn")]
 script = ExtResource("1_js0lu")
 platforms = Array[PackedScene]([ExtResource("2_8qswn"), ExtResource("3_rm0al"), ExtResource("4_i4re6")])
@@ -424,6 +433,12 @@ offset_right = 1333.0
 offset_bottom = 750.0
 texture = ExtResource("6_i4re6")
 metadata/_edit_use_anchors_ = true
+
+[node name="CoinsPicked" type="Label" parent="Level/Background" unique_id=116239973]
+offset_right = 167.0
+offset_bottom = 23.0
+text = "{coins_amount} Coins"
+label_settings = SubResource("LabelSettings_ostoq")
 
 [node name="World" type="Node2D" parent="Level" unique_id=1720226140]
 position = Vector2(0, 1)

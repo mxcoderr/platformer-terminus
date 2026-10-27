@@ -1,7 +1,10 @@
 extends Area2D
 
+@onready var game_manager = get_node("/root/Game/GameManager") # might break, but % does not work.
+
 func _on_body_entered(_body: Node2D) -> void:
 	set_deferred("monitoring", false)
+	game_manager.add_to_score()
 	
 	var tween = create_tween()
 	
