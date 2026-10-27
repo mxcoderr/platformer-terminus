@@ -69,8 +69,7 @@ func _physics_process(delta: float) -> void:
 			attack_animation = "player attack"
 			animated_sprite.play(attack_animation)
 			animated_sprite.frame = current_frame
-		
-	elif not is_on_floor():
+	elif not is_on_floor(): 
 		if animated_sprite.animation != "player jump":
 			animated_sprite.play("player jump")
 		animated_sprite.flip_h = direction < 0
