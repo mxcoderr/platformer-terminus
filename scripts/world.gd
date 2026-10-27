@@ -11,7 +11,8 @@ var ELIXIR = preload("res://scenes/elixir.tscn")
 
 func _ready() -> void:
 	rng.set_seed(0)
-	rng.randi()
+	#rng.randi()
+	#rng = config.rng
 	player = config.get_node("Player")
 	last_pos = config.spawn.exit_pos
 	generate_one()
@@ -80,6 +81,11 @@ func generate_placeables(plat):
 		plat.add_child(zombie)
 	elif die < elixir_threshold:
 		var elixir = ELIXIR.instantiate()
+		var elixir_types = config.ElixirType.values()
+		var elixir_type: LevelConfig.ElixirType = elixir_types[rng.randi() % elixir_types.size()]
+		#print(elixir_type)
+		elixir.initialize(elixir_type)
+		
 		elixir.position = Vector2(200, -60)
 		plat.add_child(elixir)
 

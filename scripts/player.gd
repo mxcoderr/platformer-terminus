@@ -12,12 +12,13 @@ var attack_animation: String = "" # to prevent multiple attack animations at onc
 
 @onready var animated_sprite = $AnimatedSprite2D
 
-var gravity_coefficient = 7.5
+var gravity_coefficient: float
 
 func _ready() -> void:
 	last_safe_y = global_position.y
 
 func _physics_process(delta: float) -> void:
+	gravity_coefficient = $"..".gravity_coefficient
 	var direction := Input.get_axis("move_left", "move_right")
 
 #	Ensures inputs are deactivated once player is dead.

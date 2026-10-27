@@ -1,4 +1,5 @@
 extends Node2D
+class_name LevelConfig
 
 @export var gravity_coefficient = 7.5
 
@@ -10,6 +11,8 @@ extends Node2D
 
 @export var platforms: Array[PackedScene]
 @export var spawn: Node2D # Start platform
+
+enum ElixirType {JUMP, MOVE, GRAVITY}
 
 var coin_chance = 0.1
 var zombie_chance = 0.1
