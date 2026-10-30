@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://c6rv6midg2lo2"]
 
+[ext_resource type="Script" uid="uid://ceqprewuvdr0w" path="res://scripts/score_manager.gd" id="1_2iuns"]
 [ext_resource type="Script" uid="uid://xl3q5jkes7m" path="res://scripts/level_config.gd" id="1_js0lu"]
 [ext_resource type="Script" uid="uid://cy8l80hgm5cjq" path="res://scripts/player.gd" id="1_lnu2h"]
-[ext_resource type="Script" uid="uid://ceqprewuvdr0w" path="res://scripts/game_manager.gd" id="1_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://dut8a2cpg2syr" path="res://scenes/plat_01.tscn" id="2_8qswn"]
 [ext_resource type="Texture2D" uid="uid://cndy2vntdp8pa" path="res://assets/knight/Idle (1).png" id="2_lbhrr"]
 [ext_resource type="Script" uid="uid://bdsh6ncbihau0" path="res://scripts/world.gd" id="2_oaba0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dj1cmq7c8ekr4" path="res://assets/knight/Dead (2).png" id="5_oaba0"]
 [ext_resource type="Shader" uid="uid://unlgqv58x3q8" path="res://shader/background.gdshader" id="5_pf7vy"]
 [ext_resource type="Texture2D" uid="uid://dmr0qrfo4nlpv" path="res://assets/knight/Idle (4).png" id="5_trtic"]
+[ext_resource type="Script" uid="uid://5heqotfh57p4" path="res://scripts/background_labels.gd" id="6_2iuns"]
 [ext_resource type="Texture2D" uid="uid://dt502bbmdhkln" path="res://assets/knight/Dead (3).png" id="6_458eo"]
 [ext_resource type="Texture2D" uid="uid://deww7sdixpsai" path="res://assets/world/SkyRuins/Background/Sky_Ruins_2D_Platformer_Tileset_Background - Layer 00.png" id="6_i4re6"]
 [ext_resource type="Texture2D" uid="uid://q7noqdikt44d" path="res://assets/knight/Idle (5).png" id="6_ir15t"]
@@ -413,9 +414,9 @@ height = 524.0
 
 [node name="Game" type="Node2D" unique_id=650088776]
 
-[node name="GameManager" type="Node" parent="." unique_id=135517712]
+[node name="ScoreManager" type="Node" parent="." unique_id=135517712]
 unique_name_in_owner = true
-script = ExtResource("1_sxt1d")
+script = ExtResource("1_2iuns")
 
 [node name="Level" type="Node2D" parent="." unique_id=246386792 node_paths=PackedStringArray("spawn")]
 script = ExtResource("1_js0lu")
@@ -424,6 +425,7 @@ spawn = NodePath("World/Spawn")
 
 [node name="Background" type="CanvasLayer" parent="Level" unique_id=1284140728]
 layer = -4
+script = ExtResource("6_2iuns")
 
 [node name="BackgroundImage" type="TextureRect" parent="Level/Background" unique_id=1743733758]
 texture_repeat = 2
@@ -434,10 +436,20 @@ offset_bottom = 750.0
 texture = ExtResource("6_i4re6")
 metadata/_edit_use_anchors_ = true
 
-[node name="CoinsPicked" type="Label" parent="Level/Background" unique_id=116239973]
+[node name="CoinCounter" type="Label" parent="Level/Background" unique_id=116239973]
 offset_right = 167.0
 offset_bottom = 23.0
-text = "{coins_amount} Coins"
+text = "0 Coins"
+label_settings = SubResource("LabelSettings_ostoq")
+
+[node name="ScoreCounter" type="Label" parent="Level/Background" unique_id=940067150]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_bottom = 45.0
+grow_horizontal = 0
+text = "0 Score"
 label_settings = SubResource("LabelSettings_ostoq")
 
 [node name="World" type="Node2D" parent="Level" unique_id=1720226140]

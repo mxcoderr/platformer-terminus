@@ -16,6 +16,10 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ScoreManager="*uid://ceqprewuvdr0w"
+
 [display]
 
 window/stretch/mode="canvas_items"
