@@ -1,78 +1,86 @@
 [gd_scene format=4 uid="uid://c6rv6midg2lo2"]
 
 [ext_resource type="Script" uid="uid://ceqprewuvdr0w" path="res://scripts/score_manager.gd" id="1_2iuns"]
+[ext_resource type="Texture2D" uid="uid://bqqg1mlnlo0ng" path="res://assets/world/BG/BG.png" id="1_7gkqi"]
 [ext_resource type="Script" uid="uid://xl3q5jkes7m" path="res://scripts/level_config.gd" id="1_js0lu"]
 [ext_resource type="Script" uid="uid://cy8l80hgm5cjq" path="res://scripts/player.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dut8a2cpg2syr" path="res://scenes/plat_01.tscn" id="2_8qswn"]
-[ext_resource type="Texture2D" uid="uid://cndy2vntdp8pa" path="res://assets/knight/Idle (1).png" id="2_lbhrr"]
+[ext_resource type="FontFile" uid="uid://cb33ik2ptgycv" path="res://assets/font/Mountains_of_Christmas/MountainsofChristmas-Bold.ttf" id="2_753oq"]
+[ext_resource type="Texture2D" uid="uid://cndy2vntdp8pa" path="res://assets/character/knight/Idle (1).png" id="2_lbhrr"]
 [ext_resource type="Script" uid="uid://bdsh6ncbihau0" path="res://scripts/world.gd" id="2_oaba0"]
-[ext_resource type="Texture2D" uid="uid://dypxasgd2l4i3" path="res://assets/knight/Idle (2).png" id="3_dinhu"]
+[ext_resource type="Texture2D" uid="uid://dypxasgd2l4i3" path="res://assets/character/knight/Idle (2).png" id="3_dinhu"]
 [ext_resource type="PackedScene" uid="uid://caacbwvay84dc" path="res://scenes/plat_02.tscn" id="3_rm0al"]
-[ext_resource type="Texture2D" uid="uid://2bk2xcrgfgfi" path="res://assets/knight/Dead (1).png" id="4_0sl42"]
+[ext_resource type="Texture2D" uid="uid://2bk2xcrgfgfi" path="res://assets/character/knight/Dead (1).png" id="4_0sl42"]
 [ext_resource type="PackedScene" uid="uid://bp7xq1h6lq27p" path="res://scenes/plat_03.tscn" id="4_i4re6"]
-[ext_resource type="Texture2D" uid="uid://c1bygblht6qvl" path="res://assets/knight/Idle (3).png" id="4_kvuet"]
-[ext_resource type="Texture2D" uid="uid://dj1cmq7c8ekr4" path="res://assets/knight/Dead (2).png" id="5_oaba0"]
+[ext_resource type="Texture2D" uid="uid://c1bygblht6qvl" path="res://assets/character/knight/Idle (3).png" id="4_kvuet"]
+[ext_resource type="Texture2D" uid="uid://dj1cmq7c8ekr4" path="res://assets/character/knight/Dead (2).png" id="5_oaba0"]
 [ext_resource type="Shader" uid="uid://unlgqv58x3q8" path="res://shader/background.gdshader" id="5_pf7vy"]
-[ext_resource type="Texture2D" uid="uid://dmr0qrfo4nlpv" path="res://assets/knight/Idle (4).png" id="5_trtic"]
+[ext_resource type="Texture2D" uid="uid://dmr0qrfo4nlpv" path="res://assets/character/knight/Idle (4).png" id="5_trtic"]
 [ext_resource type="Script" uid="uid://5heqotfh57p4" path="res://scripts/background_labels.gd" id="6_2iuns"]
-[ext_resource type="Texture2D" uid="uid://dt502bbmdhkln" path="res://assets/knight/Dead (3).png" id="6_458eo"]
+[ext_resource type="Texture2D" uid="uid://dt502bbmdhkln" path="res://assets/character/knight/Dead (3).png" id="6_458eo"]
 [ext_resource type="Texture2D" uid="uid://deww7sdixpsai" path="res://assets/world/SkyRuins/Background/Sky_Ruins_2D_Platformer_Tileset_Background - Layer 00.png" id="6_i4re6"]
-[ext_resource type="Texture2D" uid="uid://q7noqdikt44d" path="res://assets/knight/Idle (5).png" id="6_ir15t"]
+[ext_resource type="Texture2D" uid="uid://q7noqdikt44d" path="res://assets/character/knight/Idle (5).png" id="6_ir15t"]
 [ext_resource type="Script" uid="uid://t10768ixed4f" path="res://scripts/spawn.gd" id="6_pf7vy"]
-[ext_resource type="Texture2D" uid="uid://biy6a8v644pns" path="res://assets/knight/Idle (6).png" id="7_ca42v"]
-[ext_resource type="Texture2D" uid="uid://beb3a40onxdo8" path="res://assets/knight/Dead (4).png" id="7_h3rex"]
-[ext_resource type="Texture2D" uid="uid://ctjb6cldpbj2r" path="res://assets/knight/Dead (5).png" id="8_fedci"]
-[ext_resource type="Texture2D" uid="uid://bpruccaw0oufi" path="res://assets/knight/Idle (7).png" id="8_rysoc"]
-[ext_resource type="Texture2D" uid="uid://bg0fjjjvn1bs2" path="res://assets/knight/Dead (6).png" id="9_8qswn"]
-[ext_resource type="Texture2D" uid="uid://cn5f15jtceqv5" path="res://assets/knight/Idle (8).png" id="9_ssvqc"]
-[ext_resource type="Texture2D" uid="uid://dsp0j2l5xr2k2" path="res://assets/knight/Idle (9).png" id="10_264po"]
-[ext_resource type="Texture2D" uid="uid://bjksfp1qaon6k" path="res://assets/knight/Dead (7).png" id="10_rm0al"]
-[ext_resource type="Texture2D" uid="uid://dlwoyljw3hrqt" path="res://assets/knight/Idle (10).png" id="11_1kice"]
-[ext_resource type="Texture2D" uid="uid://bvhceudnlev00" path="res://assets/knight/Dead (8).png" id="11_i4re6"]
-[ext_resource type="Texture2D" uid="uid://d25ucn1ok1l47" path="res://assets/knight/Walk (1).png" id="12_37s47"]
-[ext_resource type="Texture2D" uid="uid://dp6gyf4qge0vy" path="res://assets/knight/Attack (1).png" id="12_bnuda"]
-[ext_resource type="Texture2D" uid="uid://dk1d5xf20j2ve" path="res://assets/knight/Dead (9).png" id="12_pf7vy"]
-[ext_resource type="Texture2D" uid="uid://dqyh55m3qwdrg" path="res://assets/knight/Jump (1).png" id="12_wljb1"]
-[ext_resource type="Texture2D" uid="uid://b5utsru0528j0" path="res://assets/knight/Attack (2).png" id="13_0rmfi"]
-[ext_resource type="Texture2D" uid="uid://cxw14m54ajknl" path="res://assets/knight/Walk (2).png" id="13_bt5mj"]
-[ext_resource type="Texture2D" uid="uid://jrcr0fxdx1ak" path="res://assets/knight/Dead (10).png" id="13_o8ni1"]
-[ext_resource type="Texture2D" uid="uid://bvq5ahjl412dd" path="res://assets/knight/Jump (2).png" id="13_v2yb1"]
-[ext_resource type="Texture2D" uid="uid://dpakxfljhgcyx" path="res://assets/knight/Walk (3).png" id="14_e1j6l"]
-[ext_resource type="Texture2D" uid="uid://br23u77rhpdn8" path="res://assets/knight/Jump (3).png" id="14_js0lu"]
-[ext_resource type="Texture2D" uid="uid://b7udfgq23tul5" path="res://assets/knight/Attack (3).png" id="14_xbak0"]
-[ext_resource type="Texture2D" uid="uid://cib4xxw0lwgx2" path="res://assets/knight/Attack (4).png" id="15_3x28f"]
-[ext_resource type="Texture2D" uid="uid://dc233qi0j8lqg" path="res://assets/knight/Jump (4).png" id="15_gxtfn"]
-[ext_resource type="Texture2D" uid="uid://c4lmlei8dvrup" path="res://assets/knight/Walk (4).png" id="15_pl11u"]
-[ext_resource type="Texture2D" uid="uid://bnwe4mb8c4dj2" path="res://assets/knight/Walk (5).png" id="16_bhx41"]
-[ext_resource type="Texture2D" uid="uid://drnoibdxwih4i" path="res://assets/knight/Attack (5).png" id="16_l6q63"]
-[ext_resource type="Texture2D" uid="uid://dtkvb22dkfd62" path="res://assets/knight/Jump (5).png" id="16_twgab"]
-[ext_resource type="Texture2D" uid="uid://c0evfbfrmmjpk" path="res://assets/knight/Jump (6).png" id="17_02fa5"]
-[ext_resource type="Texture2D" uid="uid://cpcg4uo4ncjdi" path="res://assets/knight/Attack (6).png" id="17_mmvbu"]
-[ext_resource type="Texture2D" uid="uid://b78fiohxha3u3" path="res://assets/knight/Walk (6).png" id="17_qnb83"]
-[ext_resource type="Texture2D" uid="uid://co170ev83q2jc" path="res://assets/knight/Jump (7).png" id="18_nepv3"]
-[ext_resource type="Texture2D" uid="uid://bn2ojdokyc1qj" path="res://assets/knight/Walk (7).png" id="18_sww3w"]
-[ext_resource type="Texture2D" uid="uid://ccfhx0wx7r8fg" path="res://assets/knight/Attack (7).png" id="18_weeiq"]
-[ext_resource type="Texture2D" uid="uid://cqfl2gvkrxqul" path="res://assets/knight/Jump (8).png" id="19_7025r"]
-[ext_resource type="Texture2D" uid="uid://brcws382sr8u0" path="res://assets/knight/Walk (8).png" id="19_suyxu"]
-[ext_resource type="Texture2D" uid="uid://bp1j4sm7pnrc1" path="res://assets/knight/Attack (8).png" id="19_uxocx"]
-[ext_resource type="Texture2D" uid="uid://boplbspx0fu3a" path="res://assets/knight/Attack (9).png" id="20_7nv0b"]
-[ext_resource type="Texture2D" uid="uid://cer4b6l48qevg" path="res://assets/knight/Jump (9).png" id="20_m4url"]
-[ext_resource type="Texture2D" uid="uid://ddwicu0lnyvnc" path="res://assets/knight/Walk (9).png" id="20_sgl2t"]
-[ext_resource type="Texture2D" uid="uid://dqgdcgrerulnq" path="res://assets/knight/Jump (10).png" id="21_8ool0"]
-[ext_resource type="Texture2D" uid="uid://b1ihp4w3xeur6" path="res://assets/knight/Attack (10).png" id="21_o8oq8"]
-[ext_resource type="Texture2D" uid="uid://d2jvwwlvlpxqn" path="res://assets/knight/Walk (10).png" id="21_qouja"]
+[ext_resource type="Texture2D" uid="uid://biy6a8v644pns" path="res://assets/character/knight/Idle (6).png" id="7_ca42v"]
+[ext_resource type="Texture2D" uid="uid://beb3a40onxdo8" path="res://assets/character/knight/Dead (4).png" id="7_h3rex"]
+[ext_resource type="Texture2D" uid="uid://ctjb6cldpbj2r" path="res://assets/character/knight/Dead (5).png" id="8_fedci"]
+[ext_resource type="Texture2D" uid="uid://bpruccaw0oufi" path="res://assets/character/knight/Idle (7).png" id="8_rysoc"]
+[ext_resource type="Texture2D" uid="uid://bg0fjjjvn1bs2" path="res://assets/character/knight/Dead (6).png" id="9_8qswn"]
+[ext_resource type="Texture2D" uid="uid://cn5f15jtceqv5" path="res://assets/character/knight/Idle (8).png" id="9_ssvqc"]
+[ext_resource type="Texture2D" uid="uid://dsp0j2l5xr2k2" path="res://assets/character/knight/Idle (9).png" id="10_264po"]
+[ext_resource type="Texture2D" uid="uid://bjksfp1qaon6k" path="res://assets/character/knight/Dead (7).png" id="10_rm0al"]
+[ext_resource type="Texture2D" uid="uid://dlwoyljw3hrqt" path="res://assets/character/knight/Idle (10).png" id="11_1kice"]
+[ext_resource type="Texture2D" uid="uid://bvhceudnlev00" path="res://assets/character/knight/Dead (8).png" id="11_i4re6"]
+[ext_resource type="Texture2D" uid="uid://d25ucn1ok1l47" path="res://assets/character/knight/Walk (1).png" id="12_37s47"]
+[ext_resource type="Texture2D" uid="uid://dp6gyf4qge0vy" path="res://assets/character/knight/Attack (1).png" id="12_bnuda"]
+[ext_resource type="Texture2D" uid="uid://dk1d5xf20j2ve" path="res://assets/character/knight/Dead (9).png" id="12_pf7vy"]
+[ext_resource type="Texture2D" uid="uid://dqyh55m3qwdrg" path="res://assets/character/knight/Jump (1).png" id="12_wljb1"]
+[ext_resource type="Texture2D" uid="uid://b5utsru0528j0" path="res://assets/character/knight/Attack (2).png" id="13_0rmfi"]
+[ext_resource type="Texture2D" uid="uid://cxw14m54ajknl" path="res://assets/character/knight/Walk (2).png" id="13_bt5mj"]
+[ext_resource type="Texture2D" uid="uid://jrcr0fxdx1ak" path="res://assets/character/knight/Dead (10).png" id="13_o8ni1"]
+[ext_resource type="Texture2D" uid="uid://bvq5ahjl412dd" path="res://assets/character/knight/Jump (2).png" id="13_v2yb1"]
+[ext_resource type="Texture2D" uid="uid://dpakxfljhgcyx" path="res://assets/character/knight/Walk (3).png" id="14_e1j6l"]
+[ext_resource type="Texture2D" uid="uid://br23u77rhpdn8" path="res://assets/character/knight/Jump (3).png" id="14_js0lu"]
+[ext_resource type="Texture2D" uid="uid://b7udfgq23tul5" path="res://assets/character/knight/Attack (3).png" id="14_xbak0"]
+[ext_resource type="Texture2D" uid="uid://cib4xxw0lwgx2" path="res://assets/character/knight/Attack (4).png" id="15_3x28f"]
+[ext_resource type="Texture2D" uid="uid://dc233qi0j8lqg" path="res://assets/character/knight/Jump (4).png" id="15_gxtfn"]
+[ext_resource type="Texture2D" uid="uid://c4lmlei8dvrup" path="res://assets/character/knight/Walk (4).png" id="15_pl11u"]
+[ext_resource type="Texture2D" uid="uid://bnwe4mb8c4dj2" path="res://assets/character/knight/Walk (5).png" id="16_bhx41"]
+[ext_resource type="Texture2D" uid="uid://drnoibdxwih4i" path="res://assets/character/knight/Attack (5).png" id="16_l6q63"]
+[ext_resource type="Texture2D" uid="uid://dtkvb22dkfd62" path="res://assets/character/knight/Jump (5).png" id="16_twgab"]
+[ext_resource type="Texture2D" uid="uid://c0evfbfrmmjpk" path="res://assets/character/knight/Jump (6).png" id="17_02fa5"]
+[ext_resource type="Texture2D" uid="uid://cpcg4uo4ncjdi" path="res://assets/character/knight/Attack (6).png" id="17_mmvbu"]
+[ext_resource type="Texture2D" uid="uid://b78fiohxha3u3" path="res://assets/character/knight/Walk (6).png" id="17_qnb83"]
+[ext_resource type="Texture2D" uid="uid://co170ev83q2jc" path="res://assets/character/knight/Jump (7).png" id="18_nepv3"]
+[ext_resource type="Texture2D" uid="uid://bn2ojdokyc1qj" path="res://assets/character/knight/Walk (7).png" id="18_sww3w"]
+[ext_resource type="Texture2D" uid="uid://ccfhx0wx7r8fg" path="res://assets/character/knight/Attack (7).png" id="18_weeiq"]
+[ext_resource type="Texture2D" uid="uid://cqfl2gvkrxqul" path="res://assets/character/knight/Jump (8).png" id="19_7025r"]
+[ext_resource type="Texture2D" uid="uid://brcws382sr8u0" path="res://assets/character/knight/Walk (8).png" id="19_suyxu"]
+[ext_resource type="Texture2D" uid="uid://bp1j4sm7pnrc1" path="res://assets/character/knight/Attack (8).png" id="19_uxocx"]
+[ext_resource type="Texture2D" uid="uid://boplbspx0fu3a" path="res://assets/character/knight/Attack (9).png" id="20_7nv0b"]
+[ext_resource type="Texture2D" uid="uid://cer4b6l48qevg" path="res://assets/character/knight/Jump (9).png" id="20_m4url"]
+[ext_resource type="Texture2D" uid="uid://ddwicu0lnyvnc" path="res://assets/character/knight/Walk (9).png" id="20_sgl2t"]
+[ext_resource type="Texture2D" uid="uid://dqgdcgrerulnq" path="res://assets/character/knight/Jump (10).png" id="21_8ool0"]
+[ext_resource type="Texture2D" uid="uid://b1ihp4w3xeur6" path="res://assets/character/knight/Attack (10).png" id="21_o8oq8"]
+[ext_resource type="Texture2D" uid="uid://d2jvwwlvlpxqn" path="res://assets/character/knight/Walk (10).png" id="21_qouja"]
 [ext_resource type="Texture2D" uid="uid://ducf316lrttnv" path="res://assets/world/Tilesets/Floor.png" id="32_wljb1"]
 [ext_resource type="Script" uid="uid://dvcdadcgalx5e" path="res://scripts/follow.gd" id="33_v2yb1"]
-[ext_resource type="Texture2D" uid="uid://sds3vqsixo55" path="res://assets/knight/JumpAttack (1).png" id="51_o8oq8"]
-[ext_resource type="Texture2D" uid="uid://dgjxgnqayokfc" path="res://assets/knight/JumpAttack (2).png" id="52_sxt1d"]
-[ext_resource type="Texture2D" uid="uid://b0xowc2nae1t2" path="res://assets/knight/JumpAttack (3).png" id="53_2iuns"]
-[ext_resource type="Texture2D" uid="uid://br528lhi6rx5" path="res://assets/knight/JumpAttack (4).png" id="54_7gkqi"]
-[ext_resource type="Texture2D" uid="uid://d2xlui4v4heec" path="res://assets/knight/JumpAttack (5).png" id="55_753oq"]
-[ext_resource type="Texture2D" uid="uid://223x53kf4hqo" path="res://assets/knight/JumpAttack (6).png" id="56_3x338"]
-[ext_resource type="Texture2D" uid="uid://chw5ghmn7kp22" path="res://assets/knight/JumpAttack (7).png" id="57_1yg85"]
-[ext_resource type="Texture2D" uid="uid://lx7uj0sytkq2" path="res://assets/knight/JumpAttack (8).png" id="58_s0g06"]
-[ext_resource type="Texture2D" uid="uid://dr8joq51n30w1" path="res://assets/knight/JumpAttack (9).png" id="59_2gnni"]
-[ext_resource type="Texture2D" uid="uid://baq1f17yd3bkx" path="res://assets/knight/JumpAttack (10).png" id="60_vgxg3"]
+[ext_resource type="Texture2D" uid="uid://sds3vqsixo55" path="res://assets/character/knight/JumpAttack (1).png" id="51_o8oq8"]
+[ext_resource type="Texture2D" uid="uid://dgjxgnqayokfc" path="res://assets/character/knight/JumpAttack (2).png" id="52_sxt1d"]
+[ext_resource type="Texture2D" uid="uid://b0xowc2nae1t2" path="res://assets/character/knight/JumpAttack (3).png" id="53_2iuns"]
+[ext_resource type="Texture2D" uid="uid://br528lhi6rx5" path="res://assets/character/knight/JumpAttack (4).png" id="54_7gkqi"]
+[ext_resource type="Texture2D" uid="uid://d2xlui4v4heec" path="res://assets/character/knight/JumpAttack (5).png" id="55_753oq"]
+[ext_resource type="Texture2D" uid="uid://223x53kf4hqo" path="res://assets/character/knight/JumpAttack (6).png" id="56_3x338"]
+[ext_resource type="Texture2D" uid="uid://chw5ghmn7kp22" path="res://assets/character/knight/JumpAttack (7).png" id="57_1yg85"]
+[ext_resource type="Texture2D" uid="uid://lx7uj0sytkq2" path="res://assets/character/knight/JumpAttack (8).png" id="58_s0g06"]
+[ext_resource type="Texture2D" uid="uid://dr8joq51n30w1" path="res://assets/character/knight/JumpAttack (9).png" id="59_2gnni"]
+[ext_resource type="Texture2D" uid="uid://baq1f17yd3bkx" path="res://assets/character/knight/JumpAttack (10).png" id="60_vgxg3"]
+
+[sub_resource type="Theme" id="Theme_2gnni"]
+default_font = ExtResource("2_753oq")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.47058824)
+Label/constants/outline_size = 4
+Label/constants/shadow_outline_size = 5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
 shader = ExtResource("5_pf7vy")
@@ -414,6 +422,96 @@ height = 524.0
 
 [node name="Game" type="Node2D" unique_id=650088776]
 
+[node name="MainMenuLayer" type="CanvasLayer" parent="." unique_id=654839895]
+visible = false
+
+[node name="MainMenu" type="Control" parent="MainMenuLayer" unique_id=62971948]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_2gnni")
+
+[node name="Background" type="TextureRect" parent="MainMenuLayer/MainMenu" unique_id=44647958]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7gkqi")
+expand_mode = 2
+
+[node name="UI" type="Control" parent="MainMenuLayer/MainMenu" unique_id=806398800]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainGroup" type="Control" parent="MainMenuLayer/MainMenu/UI" unique_id=492069369]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="MainMenuLayer/MainMenu/UI/MainGroup" unique_id=1815581183]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.25
+offset_left = 430.5
+offset_top = 121.600006
+offset_right = 681.5
+offset_bottom = 217.6
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.49842632, 0.5757402, 0.6840858, 1)
+theme_override_font_sizes/font_size = 70
+text = "Terminus"
+
+[node name="MenuButtons" type="VBoxContainer" parent="MainMenuLayer/MainMenu/UI/MainGroup" unique_id=943321414]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.545
+anchor_right = 0.5
+anchor_bottom = 0.612
+offset_left = 476.0
+offset_top = 219.068
+offset_right = 636.0
+offset_bottom = 484.38797
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewGame" type="Button" parent="MainMenuLayer/MainMenu/UI/MainGroup/MenuButtons" unique_id=1827901918]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "New Game"
+
+[node name="Setting" type="Button" parent="MainMenuLayer/MainMenu/UI/MainGroup/MenuButtons" unique_id=1637597377]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+
+[node name="Credits" type="Button" parent="MainMenuLayer/MainMenu/UI/MainGroup/MenuButtons" unique_id=226597822]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+
+[node name="QuitGame" type="Button" parent="MainMenuLayer/MainMenu/UI/MainGroup/MenuButtons" unique_id=219342368]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="SettingsGroup" type="Control" parent="MainMenuLayer/MainMenu/UI" unique_id=1573396577]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="ScoreManager" type="Node" parent="." unique_id=135517712]
 unique_name_in_owner = true
 script = ExtResource("1_2iuns")
@@ -434,7 +532,6 @@ offset_left = -1.0
 offset_right = 1333.0
 offset_bottom = 750.0
 texture = ExtResource("6_i4re6")
-metadata/_edit_use_anchors_ = true
 
 [node name="CoinCounter" type="Label" parent="Level/Background" unique_id=116239973]
 offset_right = 167.0
