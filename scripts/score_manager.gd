@@ -6,7 +6,6 @@ signal highscore_table_changed()
 
 var _coins = 0
 var _score = 0
-var current_seed: int = 0
 var highscores: Array = []
 
 const SAVE_PATH := "user://highscores.json"

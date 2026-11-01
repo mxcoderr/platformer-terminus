@@ -64,7 +64,8 @@ func _physics_process(delta: float) -> void:
 
 # Handles the player animations
 	if attack:
-		animated_sprite.flip_h = direction < 0
+		if direction != 0:
+			animated_sprite.flip_h = direction < 0
 		# End a jump attack when landing
 		if attack_animation == "player jump_attack" and is_on_floor():
 			var current_frame = animated_sprite.frame
@@ -74,7 +75,8 @@ func _physics_process(delta: float) -> void:
 	elif not is_on_floor(): 
 		if animated_sprite.animation != "player jump":
 			animated_sprite.play("player jump")
-		animated_sprite.flip_h = direction < 0
+		if direction != 0:
+			animated_sprite.flip_h = direction < 0
 	elif velocity.x != 0:
 		if animated_sprite.animation != "player walk":
 			animated_sprite.play("player walk")

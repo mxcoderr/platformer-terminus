@@ -43,7 +43,7 @@ func _hide_all_groups():
 func _on_start():
 	var seed_text: String = $UI/NewGameGroup/SeedNewGame.text.strip_edges()
 	if seed_text.is_empty():
-		ScoreManager.current_seed = randi()
+		GameManager.current_seed = randi()
 	else:
-		ScoreManager.current_seed = seed_text.to_int()
+		GameManager.current_seed = seed_text.to_int()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
