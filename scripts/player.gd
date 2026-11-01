@@ -59,6 +59,7 @@ func _physics_process(delta: float) -> void:
 		if not dead:
 			dead = true
 			animated_sprite.play("player death")
+			_on_death()
 		return
 
 # Handles the player animations
@@ -89,3 +90,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func apply_config(config) -> void:
 	gravity_coefficient = config.gravity_coefficient
+
+func _on_death():
+	GameManager.player_died = true
+	get_tree().change_scene_to_file("res://scenes/menu_layer.tscn")

@@ -15,7 +15,9 @@ var placed_elixirs: Array[bool]
 var movement_elixir_factor = 1.5
 
 func _ready() -> void:
-	rng.set_seed(0)
+	rng.seed = ScoreManager.current_seed
+	print("Seed: " + str(rng.seed))
+	
 	active_elixirs.resize(config.ElixirType.values().size())
 	active_elixirs.fill(false)
 	

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnc7x8lp4vvt7"]
 
-[ext_resource type="Script" uid="uid://bbre14admc2w0" path="res://scenes/elixir.gd" id="1_q33w5"]
+[ext_resource type="Script" uid="uid://bbre14admc2w0" path="res://scripts/elixir.gd" id="1_q33w5"]
 [ext_resource type="Texture2D" uid="uid://cwkv8uxumspq2" path="res://assets/world/SkyRuins/Collectable Object/Sky_Ruins_2D_Platformer_Tileset_Collectable Object - Elixir.png" id="1_s3alh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vc581"]
