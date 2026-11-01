@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://cb33ik2ptgycv" path="res://assets/font/Mountains_of_Christmas/MountainsofChristmas-Bold.ttf" id="2_753oq"]
 [ext_resource type="Texture2D" uid="uid://cndy2vntdp8pa" path="res://assets/character/knight/Idle (1).png" id="2_lbhrr"]
 [ext_resource type="Script" uid="uid://bdsh6ncbihau0" path="res://scripts/world.gd" id="2_oaba0"]
+[ext_resource type="FontFile" uid="uid://c8fnjv8fxdist" path="res://assets/font/Mountains_of_Christmas/MountainsofChristmas-Regular.ttf" id="3_3x338"]
 [ext_resource type="Texture2D" uid="uid://dypxasgd2l4i3" path="res://assets/character/knight/Idle (2).png" id="3_dinhu"]
 [ext_resource type="PackedScene" uid="uid://caacbwvay84dc" path="res://scenes/plat_02.tscn" id="3_rm0al"]
 [ext_resource type="Texture2D" uid="uid://2bk2xcrgfgfi" path="res://assets/character/knight/Dead (1).png" id="4_0sl42"]
@@ -81,6 +82,26 @@ default_font = ExtResource("2_753oq")
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.47058824)
 Label/constants/outline_size = 4
 Label/constants/shadow_outline_size = 5
+
+[sub_resource type="Theme" id="Theme_753oq"]
+default_font = ExtResource("3_3x338")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.34509805)
+RichTextLabel/constants/outline_size = 2
+
+[sub_resource type="Theme" id="Theme_3x338"]
+default_font = ExtResource("3_3x338")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.34509805)
+RichTextLabel/constants/outline_size = 2
+
+[sub_resource type="Theme" id="Theme_1yg85"]
+default_font = ExtResource("3_3x338")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.34509805)
+RichTextLabel/constants/outline_size = 2
+
+[sub_resource type="Theme" id="Theme_vgxg3"]
+default_font = ExtResource("3_3x338")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.34509805)
+RichTextLabel/constants/outline_size = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
 shader = ExtResource("5_pf7vy")
@@ -452,26 +473,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainGroup" type="Control" parent="MainMenuLayer/MainMenu/UI" unique_id=492069369]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Title" type="Label" parent="MainMenuLayer/MainMenu/UI/MainGroup" unique_id=1815581183]
+[node name="Title" type="Label" parent="MainMenuLayer/MainMenu/UI" unique_id=1815581183]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.2
 anchor_right = 0.5
 anchor_bottom = 0.25
-offset_left = 430.5
-offset_top = 121.600006
-offset_right = 681.5
-offset_bottom = 217.6
+offset_left = -125.5
+offset_right = 125.5
+offset_bottom = 96.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.49842632, 0.5757402, 0.6840858, 1)
 theme_override_font_sizes/font_size = 70
 text = "Terminus"
+
+[node name="MainGroup" type="Control" parent="MainMenuLayer/MainMenu/UI" unique_id=492069369]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="MenuButtons" type="VBoxContainer" parent="MainMenuLayer/MainMenu/UI/MainGroup" unique_id=943321414]
 layout_mode = 1
@@ -507,10 +527,243 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
+[node name="NewGameGroup" type="Control" parent="MainMenuLayer/MainMenu/UI" unique_id=1709456036]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SeedNewGame" type="LineEdit" parent="MainMenuLayer/MainMenu/UI/NewGameGroup" unique_id=466237146]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -15.5
+offset_right = 125.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "seed.."
+
+[node name="SeedLabel_NewGame" type="Label" parent="MainMenuLayer/MainMenu/UI/NewGameGroup" unique_id=1235685881]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_left = -85.5
+offset_top = -11.5
+offset_right = 85.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "Leave empty for random seed"
+
+[node name="BackNewGame" type="Button" parent="MainMenuLayer/MainMenu/UI/NewGameGroup" unique_id=925327256]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.8
+anchor_right = 0.4
+anchor_bottom = 0.8
+offset_left = -18.0
+offset_top = -15.5
+offset_right = 18.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[node name="StartNewGame" type="Button" parent="MainMenuLayer/MainMenu/UI/NewGameGroup" unique_id=1449585880]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.8
+anchor_right = 0.6
+anchor_bottom = 0.8
+offset_left = -19.5
+offset_top = -15.5
+offset_right = 19.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
 [node name="SettingsGroup" type="Control" parent="MainMenuLayer/MainMenu/UI" unique_id=1573396577]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="CreditsGroup" type="Control" parent="MainMenuLayer/MainMenu/UI" unique_id=161237563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterSpritesCredits" type="Label" parent="MainMenuLayer/MainMenu/UI/CreditsGroup" unique_id=386708247]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.4
+anchor_right = 0.3
+anchor_bottom = 0.4
+offset_left = -53.0
+offset_top = -11.5
+offset_right = 53.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Character Sprites"
+
+[node name="CharacterSpritesInfo" type="RichTextLabel" parent="MainMenuLayer/MainMenu/UI/CreditsGroup" unique_id=974369202]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.45
+anchor_right = 0.3
+anchor_bottom = 0.45
+offset_left = -150.0
+offset_top = -20.0
+offset_right = 150.0
+offset_bottom = 143.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_753oq")
+text = "Knight Character Sprites by pzUH
+Zombie Couple Character Sprites by pzUH"
+horizontal_alignment = 1
+
+[node name="TilesetsCredits" type="Label" parent="MainMenuLayer/MainMenu/UI/CreditsGroup" unique_id=1622226840]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.4
+anchor_right = 0.7
+anchor_bottom = 0.4
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tilesets"
+
+[node name="TilesetsInfo" type="RichTextLabel" parent="MainMenuLayer/MainMenu/UI/CreditsGroup" unique_id=588417642]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.35
+anchor_right = 0.75
+anchor_bottom = 0.35
+offset_left = -209.99994
+offset_top = 43.399994
+offset_right = 90.00006
+offset_bottom = 196.92996
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3x338")
+text = "Nature Platformer Tileset  by pzUH
+Sky Ruins Tileset by CraftPix.net"
+horizontal_alignment = 1
+
+[node name="UserInterfaceCredits" type="Label" parent="MainMenuLayer/MainMenu/UI/CreditsGroup" unique_id=840310080]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.7
+anchor_right = 0.3
+anchor_bottom = 0.7
+offset_left = -41.5
+offset_top = -11.5
+offset_right = 41.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "User Interface"
+
+[node name="UserInterfaceInfo" type="RichTextLabel" parent="MainMenuLayer/MainMenu/UI/CreditsGroup" unique_id=1887105322]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.67
+anchor_right = 0.35
+anchor_bottom = 0.67
+offset_left = -210.0
+offset_top = 33.53
+offset_right = 90.0
+offset_bottom = 196.93
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1yg85")
+text = "Medieval Game UI Set by pzUH"
+horizontal_alignment = 1
+
+[node name="FontCredits" type="Label" parent="MainMenuLayer/MainMenu/UI/CreditsGroup" unique_id=930887819]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.7
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Font"
+
+[node name="FontInfo" type="RichTextLabel" parent="MainMenuLayer/MainMenu/UI/CreditsGroup" unique_id=1357419034]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85
+anchor_top = 0.45
+anchor_right = 0.85
+anchor_bottom = 0.45
+offset_left = -315.0
+offset_top = 176.538
+offset_right = -15.0
+offset_bottom = 339.93796
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vgxg3")
+text = "Mountains of Christmas by Tart Workshop, Version 2.0"
+horizontal_alignment = 1
+
+[node name="BackCredits" type="Button" parent="MainMenuLayer/MainMenu/UI/CreditsGroup" unique_id=969701547]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.875
+anchor_right = 0.5
+anchor_bottom = 0.875
+offset_left = -18.0
+offset_top = -15.5
+offset_right = 18.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Back"
 
 [node name="ScoreManager" type="Node" parent="." unique_id=135517712]
 unique_name_in_owner = true
@@ -528,9 +781,10 @@ script = ExtResource("6_2iuns")
 [node name="BackgroundImage" type="TextureRect" parent="Level/Background" unique_id=1743733758]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_ostoq")
-offset_left = -1.0
-offset_right = 1333.0
-offset_bottom = 750.0
+offset_left = -72.0
+offset_top = -21.0
+offset_right = 1262.0
+offset_bottom = 729.0
 texture = ExtResource("6_i4re6")
 
 [node name="CoinCounter" type="Label" parent="Level/Background" unique_id=116239973]
@@ -550,7 +804,7 @@ text = "0 Score"
 label_settings = SubResource("LabelSettings_ostoq")
 
 [node name="World" type="Node2D" parent="Level" unique_id=1720226140]
-position = Vector2(0, 1)
+position = Vector2(0, -1)
 script = ExtResource("2_oaba0")
 metadata/_edit_group_ = true
 
