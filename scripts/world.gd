@@ -12,7 +12,11 @@ var ELIXIR = preload("res://scenes/elixir.tscn")
 
 var active_elixirs: Array[bool]
 var placed_elixirs: Array[bool]
+
+var jump_elixir_factor = 1.5
 var movement_elixir_factor = 1.5
+
+var gravity = true
 
 func _ready() -> void:
 	rng.set_seed(0)
@@ -22,29 +26,53 @@ func _ready() -> void:
 	placed_elixirs.resize(config.ElixirType.values().size())
 	placed_elixirs.fill(false)
 	
-	print("active_elixirs : ", active_elixirs)
-	print("SPEED : ", $"../Player".SPEED)
-	
-	#print("active_elixirs : ", active_elixirs)
-	#rng.randi()
-	#rng = config.rng
 	player = config.get_node("Player")
-	last_pos = config.spawn.exit_pos
+	#527, -141
+	var layer = config.spawn.tile_map
+	var rect = layer.get_used_rect()
+	var tileSize = Vector2(layer.tile_set.tile_size)
+	var top_left_local = Vector2(rect.position) * tileSize
+	var top_right_local = top_left_local + Vector2(rect.size.x * tileSize.x, 0)
+
+	var top_right_global = layer.to_global(top_right_local)
+	
+	"""print("rect.size :", rect.size)
+	print("tileSize :", tileSize)
+	print("platform length = {rect.size.x} * {tileSize.x} = ", rect.size.x * tileSize.x)
+	
+	print("rect.position : ", rect.position)
+	print("top_left_local : ", top_left_local)
+	
+	print("top_right_local : ", top_right_local)
+	print("top_right_global", top_right_global)"""
+	
+	last_pos = top_right_global
+	#last_pos = Vector2(2304,1152)
+	#last_pos = config.spawn.exit_pos
+	
 	generate_one()
 
-func _on_elixir_activated(elixir_index: int) -> void:
-	active_elixirs[elixir_index] = not active_elixirs[elixir_index]
+func _on_elixir_activated(elixir_type: int) -> void:
+	active_elixirs[elixir_type] = not active_elixirs[elixir_type]
 	
-	print("Collected elixir of type ", elixir_index)
-	print("active_elixirs : ", active_elixirs)
+	#print("Collected elixir of type ", elixir_type)
+	#print("active_elixirs : ", active_elixirs)
 	
-	if elixir_index == 2:
-		if active_elixirs[2]:
+	if elixir_type == 0:
+		if active_elixirs[elixir_type]:
+			$"../Player".JUMP_VELOCITY *= jump_elixir_factor
+		else:
+			$"../Player".JUMP_VELOCITY /= jump_elixir_factor
+	elif elixir_type == 1:
+		if active_elixirs[elixir_type]:
 			$"../Player".SPEED *= movement_elixir_factor
 		else:
 			$"../Player".SPEED /= movement_elixir_factor
+	elif elixir_type == 2:
+		$"../Player".up_direction.y *= -1
 	
-	print("SPEED : ", $"../Player".SPEED)
+	#print("SPEED : ", $"../Player".SPEED)
+	#print("JUMP_VELOCITY : ", $"../Player".JUMP_VELOCITY)
 	#print("min_horizontal : ", config.min_horizontal)
 	#print("max_horizontal : ", config.max_horizontal)
 
@@ -66,7 +94,7 @@ func generate_one():
 		var direction: int = rng.randi_range(-3, 3)
 		var direction_y: int = 0
 		if direction < 0:
-			direction_y = -rng.randi_range(config.min_vertical, config.max_vertical) * config.tile_size
+			direction_y = -(rng.randi_range(config.min_vertical, config.max_vertical) * config.tile_size)
 		elif direction > 0:
 			direction_y = rng.randi_range(config.min_vertical, config.max_vertical) * config.tile_size
 
@@ -75,11 +103,30 @@ func generate_one():
 	
 		var scene: PackedScene = config.platforms[rng.randi_range(0, config.platforms.size() - 1)]
 		var plat: Node2D = scene.instantiate()
+		
 		plat.position = last_pos + Vector2(direction_x, direction_y)
-		add_child(plat)
-		last_pos = plat.position
+		
+		if not gravity:
+			plat.rotate(PI)
+
+		var plat_tile_map_layer = plat.get_node("TileMapLayer")
+		var plat_rect = plat_tile_map_layer.get_used_rect()
+		var tile_size = Vector2(plat_tile_map_layer.tile_set.tile_size)
+		
+		var top_left = Vector2(plat_rect.position) * tile_size
+		
+		var plat_length = plat_rect.size.x * tile_size.x
+		
+		var top_right = top_left + Vector2(plat_length, 0)
+		
+		if not gravity:
+			plat.position += Vector2(plat_length, 0)
+
+		last_pos = plat.position + top_right if gravity else plat.position
 		
 		generate_placeables(plat)
+		
+		add_child(plat)
 
 # Places coins, enemies and elixirs on the platform randomly
 func generate_placeables(plat):
@@ -107,27 +154,37 @@ func generate_placeables(plat):
 		else:
 			zombie = ZOMBIE_FEMALE.instantiate()
 			#print("zombie female placed")
+		if not gravity:
+			zombie.gravity_coefficient *= -1
+			#zombie.direction *= -1
+			#zombie.floor_checker.position.y *= -1
 		zombie.position = Vector2(200, -60)
 		zombie.apply_config(player)
 		plat.add_child(zombie)
 	elif die < elixir_threshold:
 		var elixir = ELIXIR.instantiate()
 		var elixir_types = config.ElixirType.values()
-		#var elixir_type: LevelConfig.ElixirType = elixir_types[rng.randi() % elixir_types.size()]
-		#print(elixir_type)
 		var elixir_type = rng.randi() % elixir_types.size()
+		
 		elixir.initialize(elixir_type)
 		
 		elixir.collected.connect(_on_elixir_activated)
 		
-		elixir.position = Vector2(200, -60)
+		elixir.position = Vector2(300, -60)
 		plat.add_child(elixir)
 		
 		placed_elixirs[elixir_type] = not placed_elixirs[elixir_type]
 		
 		#print("Placing elixir of type ", elixir_type)
-		if elixir_type == 2:
-			if placed_elixirs[2]:
+		if elixir_type == 0:
+			if placed_elixirs[elixir_type]:
+				$"..".min_vertical *= 2
+				$"..".max_vertical *= 2
+			else:
+				$"..".min_vertical /= 2
+				$"..".max_vertical /= 2
+		elif elixir_type == 1:
+			if placed_elixirs[elixir_type]:
 				#print("Increasing the gap between platforms...")
 				$"..".min_horizontal *= movement_elixir_factor
 				$"..".max_horizontal *= movement_elixir_factor
@@ -135,7 +192,35 @@ func generate_placeables(plat):
 				#print("Decreasing the gap between platforms...")
 				$"..".min_horizontal /= movement_elixir_factor
 				$"..".max_horizontal /= movement_elixir_factor
-		print("min_horizontal : ", $"..".min_horizontal)
-		print("max_horizontal : ", $"..".max_horizontal)
+		elif elixir_type == 2:
+			gravity = not gravity
+			#if placed_elixirs[elixir_type]:
+			var scene: PackedScene = config.platforms[rng.randi_range(0, config.platforms.size() - 1)]
+			var opposite_plat: Node2D = scene.instantiate()
+			opposite_plat.position = last_pos + Vector2(0, bool_to_sign(gravity) * 1000)
+			#print("last_pos : ", last_pos)
+			#print("opposite_plat.position : ", opposite_plat.position)
+			
+			if not gravity:
+				opposite_plat.rotate(PI)
+			
+			var plat_tile_map_layer = opposite_plat.get_node("TileMapLayer")
+			var plat_rect = plat_tile_map_layer.get_used_rect()
+			var tile_size = Vector2(plat_tile_map_layer.tile_set.tile_size)
+			
+			var top_left = Vector2(plat_rect.position) * tile_size
+			
+			var plat_length = plat_rect.size.x * tile_size.x
+			
+			var top_right = top_left + Vector2(plat_length, 0)
+			
+			if not gravity:
+				opposite_plat.position += Vector2(plat_length, 0)
 
-	#print("\n----------------\n")
+			last_pos = opposite_plat.position + top_right if gravity else opposite_plat.position
+			
+			add_child(opposite_plat)
+			last_pos = opposite_plat.position
+
+func bool_to_sign(boolean: bool) -> int:
+	return 1 if boolean else -1

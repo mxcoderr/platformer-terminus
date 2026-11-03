@@ -12,21 +12,31 @@ var attack_animation: String = "" # to prevent multiple attack animations at onc
 
 @onready var animated_sprite = $AnimatedSprite2D
 
+var base_hitbox_position: Vector2
+var base_up_direction: Vector2
 var gravity_coefficient: float
 
 func _ready() -> void:
 	last_safe_y = global_position.y
+	
+	base_up_direction = up_direction
+	base_hitbox_position = $CollisionShape2D.position
 
 func _physics_process(delta: float) -> void:
+	#print(global_position)
+	
 	gravity_coefficient = $"..".gravity_coefficient
+	if not (base_up_direction == up_direction):
+		onGravityFlipped()
+	$CollisionShape2D.position.y = base_hitbox_position.y
+	
 	var direction := Input.get_axis("move_left", "move_right")
 
-#	Ensures inputs are deactivated once player is dead.
+	# Ensures inputs are deactivated once player is dead.
 	if dead:
 		return
 	
-	if not is_on_floor():
-		velocity += get_gravity() * delta * gravity_coefficient
+	velocity += get_gravity() * gravity_coefficient * -up_direction.y * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -53,6 +63,13 @@ func _physics_process(delta: float) -> void:
 	
 	if global_position.y > last_safe_y + DEATH_FALL_DISTANCE:
 		HEALTH = 0
+	
+	"""if up_direction == Vector2.UP:
+		if global_position.y / (last_safe_y + DEATH_FALL_DISTANCE) > 1:
+			HEALTH = 0
+	else:
+		if global_position.y / (last_safe_y - DEATH_FALL_DISTANCE) > 1:
+			HEALTH = 0"""
 	
 #	Handles the players death.
 	if HEALTH <= 0:
@@ -89,3 +106,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func apply_config(config) -> void:
 	gravity_coefficient = config.gravity_coefficient
+
+func onGravityFlipped():
+	JUMP_VELOCITY *= -1
+	animated_sprite.flip_v = up_direction == Vector2.DOWN
+	base_hitbox_position.y *= -1
+	base_up_direction = up_direction

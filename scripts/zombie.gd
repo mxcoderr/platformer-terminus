@@ -8,27 +8,45 @@ var attacking = false
 var player: CharacterBody2D
 
 @onready var zombie_sprite = find_child("zombie_*_sprite", true, false)
+var floor_checker: RayCast2D
+
+var gravity_coefficient: float = 1.0
+
+func _ready() -> void:
+	floor_checker = $FloorChecker
+	if gravity_coefficient < 0:
+		floor_checker.position.x *= -1
+		#zombie_sprite.flip_h = true
 
 func _physics_process(delta: float) -> void:
+	#gravity_coefficient = $"..".gravity_coefficient
 	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	#if not is_on_floor():
+		#velocity += get_gravity() * delta
+	#velocity += get_gravity() * gravity_coefficient * delta
+	velocity += get_gravity() * delta * gravity_coefficient
+	#direction = gravity_coefficient
+	#print("direction :", direction)
+	#print("floor_checker.position :", floor_checker.position)
 	
-	
-	if !($FloorChecker.is_colliding()) or is_on_wall():
+	if !(floor_checker.is_colliding()) or is_on_wall():
 		direction *= -1
-		zombie_sprite.flip_h = (direction == -1)
-		$FloorChecker.position.x *= -1
+		#zombie_sprite.flip_h = (direction == -1)
+		floor_checker.position.x *= -1
 	
-	if direction:
+	velocity.x = direction * SPEED
+	"""if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED)"""
 		
 	# animations
 	if velocity.x != 0:
 		zombie_sprite.play("walk")
-		zombie_sprite.flip_h = direction < 0
+		if gravity_coefficient > 0:
+			zombie_sprite.flip_h = direction < 0
+		else:
+			zombie_sprite.flip_h = direction > 0
 
 	move_and_slide()
 
