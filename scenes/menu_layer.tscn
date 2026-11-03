@@ -18,6 +18,8 @@ Label/colors/font_shadow_color = Color(0, 0, 0, 0.47058824)
 Label/constants/outline_size = 4
 Label/constants/shadow_outline_size = 5
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cd141"]
+
 [sub_resource type="Theme" id="Theme_753oq"]
 default_font = ExtResource("4_cd141")
 RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.34509805)
@@ -118,6 +120,7 @@ grow_vertical = 2
 [node name="NewGame" type="Button" parent="MainMenu/UI/MainGroup/MenuButtons" unique_id=209535602]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_cd141")
 text = "New Game"
 
 [node name="Settings" type="Button" parent="MainMenu/UI/MainGroup/MenuButtons" unique_id=1515375077]

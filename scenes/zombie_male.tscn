@@ -1,51 +1,51 @@
 [gd_scene format=3 uid="uid://b43gsg488l60b"]
 
 [ext_resource type="Script" uid="uid://c8xexc62al25p" path="res://scripts/zombie.gd" id="1_i6wqh"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Attack (1).png" id="2_t35ya"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Attack (2).png" id="3_5qykh"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Attack (3).png" id="4_6nj7t"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Attack (4).png" id="5_i8ipc"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Attack (5).png" id="6_qswhy"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Attack (6).png" id="7_ghqjj"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Attack (7).png" id="8_bp43y"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Attack (8).png" id="9_5eet6"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (1).png" id="10_454pt"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (2).png" id="11_1nr3d"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (3).png" id="12_pj63q"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (4).png" id="13_owf0a"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (5).png" id="14_qtlvl"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (6).png" id="15_53ae5"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (7).png" id="16_wgrxk"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (8).png" id="17_3lgc3"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (9).png" id="18_orx5i"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (10).png" id="19_xef8f"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (11).png" id="20_hodrh"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Dead (12).png" id="21_h7aba"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (1).png" id="22_70g3d"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (2).png" id="23_7gc0x"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (3).png" id="24_hefg2"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (4).png" id="25_6ysgn"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (5).png" id="26_63jdc"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (6).png" id="27_iopxh"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (7).png" id="28_tkr7d"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (8).png" id="29_87nsx"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (9).png" id="30_pgpbo"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (10).png" id="31_y7qla"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (11).png" id="32_kbq8h"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (12).png" id="33_nchfo"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (13).png" id="34_4ulwq"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (14).png" id="35_nkvoe"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Idle (15).png" id="36_yxomq"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Walk (1).png" id="37_bx2v1"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Walk (2).png" id="38_v5epi"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Walk (3).png" id="39_1rf3o"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Walk (4).png" id="40_lbjm2"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Walk (5).png" id="41_xsgnn"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Walk (6).png" id="42_xd4ju"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Walk (7).png" id="43_1uwry"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Walk (8).png" id="44_aq4rg"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Walk (9).png" id="45_0bl64"]
-[ext_resource type="Texture2D" path="res://assets/zombies/male/Walk (10).png" id="46_7doqa"]
+[ext_resource type="Texture2D" uid="uid://dy0buj7fg06ln" path="res://assets/character/zombies/male/Attack (1).png" id="2_t35ya"]
+[ext_resource type="Texture2D" uid="uid://dn0hvwiasma3g" path="res://assets/character/zombies/male/Attack (2).png" id="3_5qykh"]
+[ext_resource type="Texture2D" uid="uid://ckqouwetsd2iy" path="res://assets/character/zombies/male/Attack (3).png" id="4_6nj7t"]
+[ext_resource type="Texture2D" uid="uid://hggichsapthm" path="res://assets/character/zombies/male/Attack (4).png" id="5_i8ipc"]
+[ext_resource type="Texture2D" uid="uid://b70qeqld1qohe" path="res://assets/character/zombies/male/Attack (5).png" id="6_qswhy"]
+[ext_resource type="Texture2D" uid="uid://bk5pb1g38vf88" path="res://assets/character/zombies/male/Attack (6).png" id="7_ghqjj"]
+[ext_resource type="Texture2D" uid="uid://ctk5wbbbr7uk8" path="res://assets/character/zombies/male/Attack (7).png" id="8_bp43y"]
+[ext_resource type="Texture2D" uid="uid://c02faoc1d6tc8" path="res://assets/character/zombies/male/Attack (8).png" id="9_5eet6"]
+[ext_resource type="Texture2D" uid="uid://dy2p0ij2utp5b" path="res://assets/character/zombies/male/Dead (1).png" id="10_454pt"]
+[ext_resource type="Texture2D" uid="uid://c1pdfb1mhripx" path="res://assets/character/zombies/male/Dead (2).png" id="11_1nr3d"]
+[ext_resource type="Texture2D" uid="uid://jjhljw0my5rs" path="res://assets/character/zombies/male/Dead (3).png" id="12_pj63q"]
+[ext_resource type="Texture2D" uid="uid://cgd1vjtjyocxs" path="res://assets/character/zombies/male/Dead (4).png" id="13_owf0a"]
+[ext_resource type="Texture2D" uid="uid://bq1gu0oxphjsc" path="res://assets/character/zombies/male/Dead (5).png" id="14_qtlvl"]
+[ext_resource type="Texture2D" uid="uid://he5kacilkfv6" path="res://assets/character/zombies/male/Dead (6).png" id="15_53ae5"]
+[ext_resource type="Texture2D" uid="uid://b2ytg4p82nau1" path="res://assets/character/zombies/male/Dead (7).png" id="16_wgrxk"]
+[ext_resource type="Texture2D" uid="uid://b8bhitrxdcyd2" path="res://assets/character/zombies/male/Dead (8).png" id="17_3lgc3"]
+[ext_resource type="Texture2D" uid="uid://ei20kst183g2" path="res://assets/character/zombies/male/Dead (9).png" id="18_orx5i"]
+[ext_resource type="Texture2D" uid="uid://e10plrmgcdj6" path="res://assets/character/zombies/male/Dead (10).png" id="19_xef8f"]
+[ext_resource type="Texture2D" uid="uid://dkkcfij2u1752" path="res://assets/character/zombies/male/Dead (11).png" id="20_hodrh"]
+[ext_resource type="Texture2D" uid="uid://das3k7j0fftye" path="res://assets/character/zombies/male/Dead (12).png" id="21_h7aba"]
+[ext_resource type="Texture2D" uid="uid://c1guq3xw55f2" path="res://assets/character/zombies/male/Idle (1).png" id="22_70g3d"]
+[ext_resource type="Texture2D" uid="uid://bg5f6vmja42w" path="res://assets/character/zombies/male/Idle (2).png" id="23_7gc0x"]
+[ext_resource type="Texture2D" uid="uid://dmrmd11y046m6" path="res://assets/character/zombies/male/Idle (3).png" id="24_hefg2"]
+[ext_resource type="Texture2D" uid="uid://dy4ddm3ahjbat" path="res://assets/character/zombies/male/Idle (4).png" id="25_6ysgn"]
+[ext_resource type="Texture2D" uid="uid://qr20siubfynn" path="res://assets/character/zombies/male/Idle (5).png" id="26_63jdc"]
+[ext_resource type="Texture2D" uid="uid://bwaspwx7blvar" path="res://assets/character/zombies/male/Idle (6).png" id="27_iopxh"]
+[ext_resource type="Texture2D" uid="uid://dsy486f8cpkv2" path="res://assets/character/zombies/male/Idle (7).png" id="28_tkr7d"]
+[ext_resource type="Texture2D" uid="uid://cxxsevuvbrf1m" path="res://assets/character/zombies/male/Idle (8).png" id="29_87nsx"]
+[ext_resource type="Texture2D" uid="uid://c7spiy4fwqsu2" path="res://assets/character/zombies/male/Idle (9).png" id="30_pgpbo"]
+[ext_resource type="Texture2D" uid="uid://cbmkeb8brrnrc" path="res://assets/character/zombies/male/Idle (10).png" id="31_y7qla"]
+[ext_resource type="Texture2D" uid="uid://yofpxiviepim" path="res://assets/character/zombies/male/Idle (11).png" id="32_kbq8h"]
+[ext_resource type="Texture2D" uid="uid://d8t5j7ktvl6q" path="res://assets/character/zombies/male/Idle (12).png" id="33_nchfo"]
+[ext_resource type="Texture2D" uid="uid://dt5cysc0sfyg1" path="res://assets/character/zombies/male/Idle (13).png" id="34_4ulwq"]
+[ext_resource type="Texture2D" uid="uid://cr62cv00rjney" path="res://assets/character/zombies/male/Idle (14).png" id="35_nkvoe"]
+[ext_resource type="Texture2D" uid="uid://3q15ro8oa7sk" path="res://assets/character/zombies/male/Idle (15).png" id="36_yxomq"]
+[ext_resource type="Texture2D" uid="uid://06a6llgao6ck" path="res://assets/character/zombies/male/Walk (1).png" id="37_bx2v1"]
+[ext_resource type="Texture2D" uid="uid://cuwcovjjsklwm" path="res://assets/character/zombies/male/Walk (2).png" id="38_v5epi"]
+[ext_resource type="Texture2D" uid="uid://c62pnwel4uf84" path="res://assets/character/zombies/male/Walk (3).png" id="39_1rf3o"]
+[ext_resource type="Texture2D" uid="uid://c6rbjvd7aca15" path="res://assets/character/zombies/male/Walk (4).png" id="40_lbjm2"]
+[ext_resource type="Texture2D" uid="uid://hbaiioc6lqxb" path="res://assets/character/zombies/male/Walk (5).png" id="41_xsgnn"]
+[ext_resource type="Texture2D" uid="uid://b7ajl56shqcm5" path="res://assets/character/zombies/male/Walk (6).png" id="42_xd4ju"]
+[ext_resource type="Texture2D" uid="uid://baknre417d7xr" path="res://assets/character/zombies/male/Walk (7).png" id="43_1uwry"]
+[ext_resource type="Texture2D" uid="uid://xrg87jodnkad" path="res://assets/character/zombies/male/Walk (8).png" id="44_aq4rg"]
+[ext_resource type="Texture2D" uid="uid://de3s4nu5ljps8" path="res://assets/character/zombies/male/Walk (9).png" id="45_0bl64"]
+[ext_resource type="Texture2D" uid="uid://csbkguf3nxh3g" path="res://assets/character/zombies/male/Walk (10).png" id="46_7doqa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kdytw"]
 animations = [{
@@ -76,7 +76,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -117,7 +117,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"dead",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -167,7 +167,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"idle",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
