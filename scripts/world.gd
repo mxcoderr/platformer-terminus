@@ -19,7 +19,9 @@ var movement_elixir_factor = 1.5
 var gravity = true
 
 func _ready() -> void:
-	rng.set_seed(0)
+	rng.seed = GameManager.current_seed
+	print("Seed: " + str(rng.seed))
+	
 	active_elixirs.resize(config.ElixirType.values().size())
 	active_elixirs.fill(false)
 	

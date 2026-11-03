@@ -1,0 +1,522 @@
+[gd_scene format=3 uid="uid://dkg628p2rg6ya"]
+
+[ext_resource type="FontFile" uid="uid://cb33ik2ptgycv" path="res://assets/font/Mountains_of_Christmas/MountainsofChristmas-Bold.ttf" id="1_iogn2"]
+[ext_resource type="Script" uid="uid://c0e7r0u2l7yk2" path="res://scripts/main_menu.gd" id="2_vcqiu"]
+[ext_resource type="Texture2D" uid="uid://bqqg1mlnlo0ng" path="res://assets/world/BG/BG.png" id="3_1xi03"]
+[ext_resource type="FontFile" uid="uid://c8fnjv8fxdist" path="res://assets/font/Mountains_of_Christmas/MountainsofChristmas-Regular.ttf" id="4_cd141"]
+[ext_resource type="Script" uid="uid://fint6uolgrxx" path="res://scripts/scoreboard.gd" id="5_vcqiu"]
+
+[sub_resource type="Theme" id="Theme_iogn2"]
+default_font = ExtResource("1_iogn2")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
+Label/constants/outline_size = 9
+Label/constants/shadow_outline_size = 21
+
+[sub_resource type="Theme" id="Theme_2gnni"]
+default_font = ExtResource("1_iogn2")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.47058824)
+Label/constants/outline_size = 4
+Label/constants/shadow_outline_size = 5
+
+[sub_resource type="Theme" id="Theme_753oq"]
+default_font = ExtResource("4_cd141")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.34509805)
+RichTextLabel/constants/outline_size = 2
+
+[sub_resource type="Theme" id="Theme_3x338"]
+default_font = ExtResource("4_cd141")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.34509805)
+RichTextLabel/constants/outline_size = 2
+
+[sub_resource type="Theme" id="Theme_1yg85"]
+default_font = ExtResource("4_cd141")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.34509805)
+RichTextLabel/constants/outline_size = 2
+
+[sub_resource type="Theme" id="Theme_vgxg3"]
+default_font = ExtResource("4_cd141")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.34509805)
+RichTextLabel/constants/outline_size = 2
+
+[sub_resource type="Theme" id="Theme_ostoq"]
+default_font = ExtResource("4_cd141")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.34901962)
+Label/constants/outline_size = 2
+Label/constants/shadow_outline_size = 5
+Label/font_sizes/font_size = 20
+
+[sub_resource type="Theme" id="Theme_ajtct"]
+default_font = ExtResource("4_cd141")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.34901962)
+Label/constants/outline_size = 2
+Label/constants/shadow_outline_size = 4
+
+[node name="MenuLayer" type="CanvasLayer" unique_id=577204862]
+
+[node name="Background" type="TextureRect" parent="." unique_id=573559289]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1xi03")
+expand_mode = 2
+
+[node name="Title" type="Label" parent="." unique_id=253200547]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+offset_left = -159.5
+offset_right = 159.5
+offset_bottom = 96.0
+grow_horizontal = 2
+theme = SubResource("Theme_iogn2")
+theme_override_colors/font_color = Color(0.49842632, 0.5757402, 0.6840858, 1)
+theme_override_font_sizes/font_size = 70
+text = "Terminus"
+horizontal_alignment = 1
+
+[node name="MainMenu" type="Control" parent="." unique_id=353403031]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_2gnni")
+script = ExtResource("2_vcqiu")
+
+[node name="UI" type="Control" parent="MainMenu" unique_id=1879013513]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainGroup" type="Control" parent="MainMenu/UI" unique_id=415226409]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuButtons" type="VBoxContainer" parent="MainMenu/UI/MainGroup" unique_id=1244589017]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.545
+anchor_right = 0.5
+anchor_bottom = 0.612
+offset_left = 476.0
+offset_top = 219.068
+offset_right = 636.0
+offset_bottom = 484.38797
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewGame" type="Button" parent="MainMenu/UI/MainGroup/MenuButtons" unique_id=209535602]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "New Game"
+
+[node name="Settings" type="Button" parent="MainMenu/UI/MainGroup/MenuButtons" unique_id=1515375077]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+
+[node name="Credits" type="Button" parent="MainMenu/UI/MainGroup/MenuButtons" unique_id=839468628]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+
+[node name="QuitGame" type="Button" parent="MainMenu/UI/MainGroup/MenuButtons" unique_id=865254982]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="NewGameGroup" type="Control" parent="MainMenu/UI" unique_id=312862751]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SeedNewGame" type="LineEdit" parent="MainMenu/UI/NewGameGroup" unique_id=337720726]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -15.5
+offset_right = 125.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "seed.."
+
+[node name="SeedLabel_NewGame" type="Label" parent="MainMenu/UI/NewGameGroup" unique_id=1081336216]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_left = -85.5
+offset_top = -11.5
+offset_right = 85.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "Leave empty for random seed"
+
+[node name="BackNewGame" type="Button" parent="MainMenu/UI/NewGameGroup" unique_id=1277173127]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.8
+anchor_right = 0.4
+anchor_bottom = 0.8
+offset_left = -18.0
+offset_top = -15.5
+offset_right = 18.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[node name="StartNewGame" type="Button" parent="MainMenu/UI/NewGameGroup" unique_id=1208305986]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.8
+anchor_right = 0.6
+anchor_bottom = 0.8
+offset_left = -19.5
+offset_top = -15.5
+offset_right = 19.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="SettingsGroup" type="Control" parent="MainMenu/UI" unique_id=1019995739]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreditsGroup" type="Control" parent="MainMenu/UI" unique_id=22763527]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterSpritesCredits" type="Label" parent="MainMenu/UI/CreditsGroup" unique_id=116785032]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.4
+anchor_right = 0.3
+anchor_bottom = 0.4
+offset_left = -53.0
+offset_top = -11.5
+offset_right = 53.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Character Sprites"
+
+[node name="CharacterSpritesInfo" type="RichTextLabel" parent="MainMenu/UI/CreditsGroup" unique_id=1486609434]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.45
+anchor_right = 0.3
+anchor_bottom = 0.45
+offset_left = -150.0
+offset_top = -20.0
+offset_right = 150.0
+offset_bottom = 143.4
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_753oq")
+text = "Knight Character Sprites by pzUH
+Zombie Couple Character Sprites by pzUH"
+horizontal_alignment = 1
+
+[node name="TilesetsCredits" type="Label" parent="MainMenu/UI/CreditsGroup" unique_id=1981241188]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.4
+anchor_right = 0.7
+anchor_bottom = 0.4
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tilesets"
+
+[node name="TilesetsInfo" type="RichTextLabel" parent="MainMenu/UI/CreditsGroup" unique_id=849904597]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.35
+anchor_right = 0.75
+anchor_bottom = 0.35
+offset_left = -209.99994
+offset_top = 43.399994
+offset_right = 90.00006
+offset_bottom = 196.92996
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3x338")
+text = "Nature Platformer Tileset  by pzUH
+Sky Ruins Tileset by CraftPix.net"
+horizontal_alignment = 1
+
+[node name="UserInterfaceCredits" type="Label" parent="MainMenu/UI/CreditsGroup" unique_id=1755086147]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.7
+anchor_right = 0.3
+anchor_bottom = 0.7
+offset_left = -41.5
+offset_top = -11.5
+offset_right = 41.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "User Interface"
+
+[node name="UserInterfaceInfo" type="RichTextLabel" parent="MainMenu/UI/CreditsGroup" unique_id=1739354829]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.67
+anchor_right = 0.35
+anchor_bottom = 0.67
+offset_left = -210.0
+offset_top = 33.53
+offset_right = 90.0
+offset_bottom = 196.93
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1yg85")
+text = "Medieval Game UI Set by pzUH"
+horizontal_alignment = 1
+
+[node name="FontCredits" type="Label" parent="MainMenu/UI/CreditsGroup" unique_id=1568236862]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.7
+anchor_right = 0.7
+anchor_bottom = 0.7
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Font"
+
+[node name="FontInfo" type="RichTextLabel" parent="MainMenu/UI/CreditsGroup" unique_id=241378218]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85
+anchor_top = 0.45
+anchor_right = 0.85
+anchor_bottom = 0.45
+offset_left = -315.0
+offset_top = 176.538
+offset_right = -15.0
+offset_bottom = 339.93796
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vgxg3")
+text = "Mountains of Christmas by Tart Workshop, Version 2.0"
+horizontal_alignment = 1
+
+[node name="BackCredits" type="Button" parent="MainMenu/UI/CreditsGroup" unique_id=76106229]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.875
+anchor_right = 0.5
+anchor_bottom = 0.875
+offset_left = -18.0
+offset_top = -15.5
+offset_right = 18.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="Scoreboard" type="Control" parent="MainMenu" unique_id=1605695461]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_vcqiu")
+
+[node name="UI" type="Control" parent="MainMenu/Scoreboard" unique_id=288366675]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShowScoreGroup" type="Control" parent="MainMenu/Scoreboard/UI" unique_id=225738863]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ostoq")
+
+[node name="Title" type="Label" parent="MainMenu/Scoreboard/UI/ShowScoreGroup" unique_id=1731521892]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.375
+anchor_right = 0.5
+anchor_bottom = 0.375
+offset_left = -44.5
+offset_top = -11.5
+offset_right = 44.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Scoreboard"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Scoreboard/UI/ShowScoreGroup" unique_id=2129015385]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/Scoreboard/UI/ShowScoreGroup/VBoxContainer" unique_id=161049891]
+layout_mode = 2
+
+[node name="#" type="Label" parent="MainMenu/Scoreboard/UI/ShowScoreGroup/VBoxContainer/HBoxContainer" unique_id=502328313]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MainMenu/Scoreboard/UI/ShowScoreGroup/VBoxContainer/HBoxContainer" unique_id=1889806146]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="MainMenu/Scoreboard/UI/ShowScoreGroup/VBoxContainer/HBoxContainer" unique_id=957285719]
+layout_mode = 2
+
+[node name="Rows" type="VBoxContainer" parent="MainMenu/Scoreboard/UI/ShowScoreGroup/VBoxContainer" unique_id=1078198926]
+layout_mode = 2
+
+[node name="NewScoreGroup" type="Control" parent="MainMenu/Scoreboard/UI" unique_id=572717134]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ajtct")
+
+[node name="ScoreLabelNewScore" type="Label" parent="MainMenu/Scoreboard/UI/NewScoreGroup" unique_id=1906060486]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+offset_left = -50.0
+offset_top = -11.5
+offset_right = 50.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Your score: 0"
+horizontal_alignment = 1
+
+[node name="NameNewScore" type="LineEdit" parent="MainMenu/Scoreboard/UI/NewScoreGroup" unique_id=810053358]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -15.5
+offset_right = 125.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "your name.."
+
+[node name="NameLabelNewScore" type="Label" parent="MainMenu/Scoreboard/UI/NewScoreGroup" unique_id=817916723]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_left = -85.5
+offset_top = -11.5
+offset_right = 85.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "Enter your name to appear in the scoreboard"
+
+[node name="ContinueNewScore" type="Button" parent="MainMenu/Scoreboard/UI/NewScoreGroup" unique_id=715669125]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.8
+anchor_right = 0.5
+anchor_bottom = 0.8
+offset_left = -18.0
+offset_top = -15.5
+offset_right = 18.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Continue"

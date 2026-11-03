@@ -76,11 +76,13 @@ func _physics_process(delta: float) -> void:
 		if not dead:
 			dead = true
 			animated_sprite.play("player death")
+			_on_death()
 		return
 
 # Handles the player animations
 	if attack:
-		animated_sprite.flip_h = direction < 0
+		if direction != 0:
+			animated_sprite.flip_h = direction < 0
 		# End a jump attack when landing
 		if attack_animation == "player jump_attack" and is_on_floor():
 			var current_frame = animated_sprite.frame
@@ -90,7 +92,8 @@ func _physics_process(delta: float) -> void:
 	elif not is_on_floor(): 
 		if animated_sprite.animation != "player jump":
 			animated_sprite.play("player jump")
-		animated_sprite.flip_h = direction < 0
+		if direction != 0:
+			animated_sprite.flip_h = direction < 0
 	elif velocity.x != 0:
 		if animated_sprite.animation != "player walk":
 			animated_sprite.play("player walk")
@@ -112,3 +115,7 @@ func onGravityFlipped():
 	animated_sprite.flip_v = up_direction == Vector2.DOWN
 	base_hitbox_position.y *= -1
 	base_up_direction = up_direction
+
+func _on_death():
+	GameManager.player_died = true
+	get_tree().change_scene_to_file("res://scenes/menu_layer.tscn")
