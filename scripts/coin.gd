@@ -1,6 +1,11 @@
 extends Area2D
 class_name Coin
 
+var animatedSprite: AnimatedSprite2D
+
+func _ready() -> void:
+	animatedSprite = $"Sprite"
+
 func _on_body_entered(_body: Node2D) -> void:
 	set_deferred("monitoring", false)
 	ScoreManager.score(self)

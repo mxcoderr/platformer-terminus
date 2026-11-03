@@ -41,12 +41,12 @@ radius = 50.159744
 collision_mask = 2
 script = ExtResource("1_jig8b")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1903764700]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1903764700]
 sprite_frames = SubResource("SpriteFrames_kahox")
 autoplay = "default"
 frame_progress = 0.7175231
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1924090924]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1924090924]
 shape = SubResource("CircleShape2D_ostoq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

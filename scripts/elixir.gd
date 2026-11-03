@@ -21,7 +21,6 @@ func initialize(givenType: LevelConfig.ElixirType):
 		$Texture.modulate = Color.GREEN
 	if type == 2:
 		$Texture.modulate = Color.BLUE
-	#print("Got a type : ", type)
 
 func _on_body_entered(_body: Node2D) -> void:
 	collected.emit(type)

@@ -16,30 +16,16 @@ func _ready() -> void:
 	floor_checker = $FloorChecker
 	if gravity_coefficient < 0:
 		floor_checker.position.x *= -1
-		#zombie_sprite.flip_h = true
 
 func _physics_process(delta: float) -> void:
-	#gravity_coefficient = $"..".gravity_coefficient
-	# Add the gravity.
-	#if not is_on_floor():
-		#velocity += get_gravity() * delta
-	#velocity += get_gravity() * gravity_coefficient * delta
-	velocity += get_gravity() * delta * gravity_coefficient
-	#direction = gravity_coefficient
-	#print("direction :", direction)
-	#print("floor_checker.position :", floor_checker.position)
+	velocity += get_gravity() * gravity_coefficient * delta
 	
 	if !(floor_checker.is_colliding()) or is_on_wall():
 		direction *= -1
-		#zombie_sprite.flip_h = (direction == -1)
 		floor_checker.position.x *= -1
 	
 	velocity.x = direction * SPEED
-	"""if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)"""
-		
+
 	# animations
 	if velocity.x != 0:
 		zombie_sprite.play("walk")

@@ -1,29 +1,22 @@
 extends Node2D
-class_name GameWorld
-"""extends Node2D
 
-#@export var exit_pos: Vector2 = Vector2(2304,1152) # (18,9)
-var tile_map: TileMapLayer
-
-func _ready() -> void:
-	tile_map = $"TileMap"
-"""
 @onready var level_config: Node = get_node("..")
 var rng := RandomNumberGenerator.new()
 var last_pos: Vector2
-var player: Node2D
+var player: CharacterBody2D
 const COIN = preload("res://scenes/coin.tscn")
 const ZOMBIE_MALE = preload("res://scenes/zombie_male.tscn")
 const ZOMBIE_FEMALE = preload("res://scenes/zombie_female.tscn")
 var ELIXIR = preload("res://scenes/elixir.tscn")
 
 var active_elixirs: Array[bool]
-var placed_elixirs: Array[bool]
+var placed_elixirs: Array[int]	# "Elixir on index i active since placed_elixirs[i] platforms"
 
 var jump_elixir_factor = 1.5
 var movement_elixir_factor = 1.5
 
 var gravity = true
+var current_plat_length: int
 
 func _ready() -> void:
 	rng.seed = GameManager.current_seed
@@ -33,32 +26,12 @@ func _ready() -> void:
 	active_elixirs.fill(false)
 	
 	placed_elixirs.resize(level_config.ElixirType.values().size())
-	placed_elixirs.fill(false)
+	placed_elixirs.fill(0)
 	
 	player = level_config.get_node("Player")
 	
-	"""var layer = level_config.spawn.get_node("TileMapLayer")
-	var rect = layer.get_used_rect()
-	var tileSize = Vector2(layer.tile_set.tile_size)
-	var top_left_local = Vector2(rect.position) * tileSize
-	var top_right_local = top_left_local + Vector2(rect.size.x * tileSize.x, 0)
-
-	var top_right_global = layer.to_global(top_right_local)"""
-	
-	"""print("rect.size :", rect.size)
-	print("tileSize :", tileSize)
-	print("platform length = {rect.size.x} * {tileSize.x} = ", rect.size.x * tileSize.x)
-	
-	print("rect.position : ", rect.position)
-	print("top_left_local : ", top_left_local)
-	
-	print("top_right_local : ", top_right_local)
-	print("top_right_global", top_right_global)"""
-	
-	"""last_pos = top_right_global"""
-	
 	generate_platform(Vector2(0,0))
-#TileMap
+
 func _on_elixir_activated(elixir_type: int) -> void:
 	active_elixirs[elixir_type] = not active_elixirs[elixir_type]
 	
@@ -67,28 +40,28 @@ func _on_elixir_activated(elixir_type: int) -> void:
 	
 	if elixir_type == 0:
 		if active_elixirs[elixir_type]:
-			$"../Player".JUMP_VELOCITY *= jump_elixir_factor
+			player.JUMP_VELOCITY *= jump_elixir_factor
 		else:
-			$"../Player".JUMP_VELOCITY /= jump_elixir_factor
+			player.JUMP_VELOCITY /= jump_elixir_factor
 	elif elixir_type == 1:
 		if active_elixirs[elixir_type]:
-			$"../Player".SPEED *= movement_elixir_factor
+			player.SPEED *= movement_elixir_factor
 		else:
-			$"../Player".SPEED /= movement_elixir_factor
+			player.SPEED /= movement_elixir_factor
 	elif elixir_type == 2:
-		$"../Player".up_direction.y *= -1
+		player.up_direction.y *= -1
 	
-	#print("SPEED : ", $"../Player".SPEED)
-	#print("JUMP_VELOCITY : ", $"../Player".JUMP_VELOCITY)
+	#print("SPEED : ", player.SPEED)
+	#print("JUMP_VELOCITY : ", player.JUMP_VELOCITY)
 	#print("min_horizontal : ", level_config.min_horizontal)
 	#print("max_horizontal : ", level_config.max_horizontal)
 
 func _process(_delta):
-#	When player gets in range call generate_platform, to generate a new platform
+	# When player gets in range call generate_platform, to generate a new platform
 	if player.position.x > last_pos.x - 2048:
 		generate_platform()
 
-#	Remove platform when player gets further away to reduce lag on long games
+	# Remove platform when player gets further away to reduce lag on long games
 	for child in get_children():
 		if child is Node2D and child != level_config.spawn:
 			if child.position.x < player.position.x - 4096:
@@ -97,11 +70,15 @@ func _process(_delta):
 """Generates one platform
 pos: Vector2 - explicit position of the next platform"""
 func generate_platform(pos: Variant = null):
+	print("placed_elixirs : ", placed_elixirs)
+	for elixir_duration in placed_elixirs:
+		if not (elixir_duration == 0):
+			elixir_duration += 1
+	
 	var scene: PackedScene = level_config.platforms[rng.randi_range(0, level_config.platforms.size() - 1)]
 	var plat: Node2D = scene.instantiate()
 	
 	if pos is Vector2:
-		print("pos is : ", pos)
 		plat.position = pos
 	else:
 		# The range sets the probability for platforms on same y level. 
@@ -117,122 +94,105 @@ func generate_platform(pos: Variant = null):
 		var direction_x: int = rng.randi_range(level_config.min_horizontal, max_x) * level_config.tile_size
 		
 		plat.position = last_pos + Vector2(direction_x, direction_y)
-	
-	if not gravity:
-		plat.rotate(PI)
 
 	var plat_tile_map_layer = plat.get_node("TileMapLayer")
 	var plat_rect = plat_tile_map_layer.get_used_rect()
 	var tile_size = Vector2(plat_tile_map_layer.tile_set.tile_size)
 	var top_left = Vector2(plat_rect.position) * tile_size
-	var plat_length = plat_rect.size.x * tile_size.x
-	var top_right = top_left + Vector2(plat_length, 0)
+	current_plat_length = plat_rect.size.x * tile_size.x
+	var top_right = top_left + Vector2(current_plat_length, 0)
 	
-	"""if not gravity:
-		plat.position += Vector2(plat_length, 0)
-		last_pos = plat.position + top_right if gravity else plat.position"""
-	if not gravity:
-		plat.position += Vector2(plat_length, 0)
-
-	last_pos = plat.position + top_right if gravity else plat.position
+	if gravity:
+		last_pos = plat.position + top_right
+	else:
+		plat.rotate(PI)
+		plat.position += Vector2(current_plat_length, 0)
+		last_pos = plat.position
 	
-	generate_placeables(plat)
+	if pos is not Vector2: generate_placeables(plat)
 	
 	add_child(plat)
 
 # Places coins, enemies and elixirs on the platform randomly
 func generate_placeables(plat):
-	var die = rng.randi() % 100
-	var coin_threshold = $"..".coin_chance * 100
-	var zombie_threshold = coin_threshold + $"..".zombie_chance * 100
-	var elixir_threshold = zombie_threshold + $"..".elixir_chance * 100
+	# Check if an elixir must be placed because of max duration expiry
+	for elixir_type in placed_elixirs.size():
+		if placed_elixirs[elixir_type] >= level_config.max_elixir_duration:
+			print("Placing elixir of type ", elixir_type)
+			var elixir = ELIXIR.instantiate()
+			elixir.initialize(elixir_type)
+			elixir.collected.connect(_on_elixir_activated)
+			elixir.position = Vector2(current_plat_length / 2, -60)
+			
+			plat.add_child(elixir)
+			
+			# Effect ends due to duration expiry
+			placed_elixirs[elixir_type] = 0
+			
+			apply_elixir_effect(elixir_type)
+		break
 	
-	#print("die = ", die)
-	#print("coin_threshold = ", coin_threshold)
-	#print("zombie_threshold = ", zombie_threshold)
-	#print("elixir_threshold = ", elixir_threshold)
+	var die = rng.randi() % 100
+	var coin_threshold = level_config.coin_chance * 100
+	var zombie_threshold = coin_threshold + level_config.zombie_chance * 100
+	var elixir_threshold = zombie_threshold + level_config.elixir_chance * 100
 	
 	if die < coin_threshold:
 		var coin = COIN.instantiate()
-		coin.position = Vector2(200, -60)
+		coin.position = Vector2(current_plat_length / 2, -60)
 		plat.add_child(coin)
-
-		#print("coin placed")
 	elif die < zombie_threshold:
 		var zombie
 		if(rng.randi() % 2 == 0):
 			zombie = ZOMBIE_MALE.instantiate()
-			#print("zombie male placed")
 		else:
 			zombie = ZOMBIE_FEMALE.instantiate()
-			#print("zombie female placed")
-		if not gravity:
-			zombie.gravity_coefficient *= -1
-			#zombie.direction *= -1
-			#zombie.floor_checker.position.y *= -1
-		zombie.position = Vector2(200, -60)
+		zombie.gravity_coefficient = bool_to_sign(gravity)
+		zombie.position = Vector2(current_plat_length / 2, -60)
 		zombie.apply_config(player)
 		plat.add_child(zombie)
 	elif die < elixir_threshold:
-		var elixir = ELIXIR.instantiate()
 		var elixir_types = level_config.ElixirType.values()
 		var elixir_type = rng.randi() % elixir_types.size()
 		
-		elixir.initialize(elixir_type)
-		
-		elixir.collected.connect(_on_elixir_activated)
-		
-		elixir.position = Vector2(300, -60)
-		plat.add_child(elixir)
-		
-		placed_elixirs[elixir_type] = not placed_elixirs[elixir_type]
-		
-		#print("Placing elixir of type ", elixir_type)
-		if elixir_type == 0:
-			if placed_elixirs[elixir_type]:
-				$"..".min_vertical *= 2
-				$"..".max_vertical *= 2
+		# Place the randomly chosen elixir if its not already active or if its min duration expired
+		if placed_elixirs[elixir_type] == 0 or placed_elixirs[elixir_type] > level_config.min_elixir_duration:
+			print("Placing elixir of type ", elixir_type)
+			
+			var elixir = ELIXIR.instantiate()
+			elixir.initialize(elixir_type)
+			elixir.collected.connect(_on_elixir_activated)
+			elixir.position = Vector2(current_plat_length / 2, -60)
+			
+			plat.add_child(elixir)
+			
+			if placed_elixirs[elixir_type] == 0:
+				# Effect starts
+				placed_elixirs[elixir_type] += 1
 			else:
-				$"..".min_vertical /= 2
-				$"..".max_vertical /= 2
-		elif elixir_type == 1:
-			if placed_elixirs[elixir_type]:
-				#print("Increasing the gap between platforms...")
-				$"..".min_horizontal *= movement_elixir_factor
-				$"..".max_horizontal *= movement_elixir_factor
-			else:
-				#print("Decreasing the gap between platforms...")
-				$"..".min_horizontal /= movement_elixir_factor
-				$"..".max_horizontal /= movement_elixir_factor
-		elif elixir_type == 2:
-			gravity = not gravity
-			#if placed_elixirs[elixir_type]:
-			var scene: PackedScene = level_config.platforms[rng.randi_range(0, level_config.platforms.size() - 1)]
-			var opposite_plat: Node2D = scene.instantiate()
-			opposite_plat.position = last_pos + Vector2(0, bool_to_sign(gravity) * 1000)
-			#print("last_pos : ", last_pos)
-			#print("opposite_plat.position : ", opposite_plat.position)
-			
-			if not gravity:
-				opposite_plat.rotate(PI)
-			
-			var plat_tile_map_layer = opposite_plat.get_node("TileMapLayer")
-			var plat_rect = plat_tile_map_layer.get_used_rect()
-			var tile_size = Vector2(plat_tile_map_layer.tile_set.tile_size)
-			
-			var top_left = Vector2(plat_rect.position) * tile_size
-			
-			var plat_length = plat_rect.size.x * tile_size.x
-			
-			var top_right = top_left + Vector2(plat_length, 0)
-			
-			if not gravity:
-				opposite_plat.position += Vector2(plat_length, 0)
+				# Effect ends
+				placed_elixirs[elixir_type] = 0
+		
+			apply_elixir_effect(elixir_type)
 
-			last_pos = opposite_plat.position + top_right if gravity else opposite_plat.position
-			
-			add_child(opposite_plat)
-			last_pos = opposite_plat.position
+func apply_elixir_effect(elixir_type: int):
+	if elixir_type == 0:
+		if placed_elixirs[elixir_type] == 1:
+			level_config.min_vertical *= 2
+			level_config.max_vertical *= 2
+		elif placed_elixirs[elixir_type] == 0:
+			level_config.min_vertical /= 2
+			level_config.max_vertical /= 2
+	elif elixir_type == 1:
+		if placed_elixirs[elixir_type] == 1:
+			level_config.min_horizontal *= movement_elixir_factor
+			level_config.max_horizontal *= movement_elixir_factor
+		elif placed_elixirs[elixir_type] == 0:
+			level_config.min_horizontal /= movement_elixir_factor
+			level_config.max_horizontal /= movement_elixir_factor
+	elif elixir_type == 2 and (placed_elixirs[elixir_type] in [0, 1]):
+		gravity = not gravity
+		generate_platform(last_pos + Vector2(0, bool_to_sign(gravity) * 1000))
 
 func bool_to_sign(boolean: bool) -> int:
 	return 1 if boolean else -1
