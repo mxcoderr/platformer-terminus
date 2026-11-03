@@ -62,10 +62,10 @@ func _physics_process(delta: float) -> void:
 		last_safe_y = global_position.y
 	
 	if up_direction == Vector2.UP:
-		if global_position.y / (last_safe_y + DEATH_FALL_DISTANCE) > 1:
+		if global_position.y - last_safe_y > DEATH_FALL_DISTANCE:
 			HEALTH = 0
 	else:
-		if global_position.y / (last_safe_y - DEATH_FALL_DISTANCE) > 1:
+		if last_safe_y - global_position.y > DEATH_FALL_DISTANCE:
 			HEALTH = 0
 	
 #	Handles the players death.

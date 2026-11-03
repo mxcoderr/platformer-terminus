@@ -21,6 +21,9 @@ var zombie_chance = 0.05
 #var gravity_elixir_chance = 0.1
 var elixir_chance = 0.5
 
+var min_elixir_duration = 5		# minimal amount of platforms where elixir should be active
+var max_elixir_duration = 10	# maximal amount of platforms where elixir should be active
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var player = $Player
