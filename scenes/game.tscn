@@ -61,7 +61,6 @@
 [ext_resource type="Texture2D" uid="uid://dqgdcgrerulnq" path="res://assets/character/knight/Jump (10).png" id="21_8ool0"]
 [ext_resource type="Texture2D" uid="uid://b1ihp4w3xeur6" path="res://assets/character/knight/Attack (10).png" id="21_o8oq8"]
 [ext_resource type="Texture2D" uid="uid://d2jvwwlvlpxqn" path="res://assets/character/knight/Walk (10).png" id="21_qouja"]
-[ext_resource type="Texture2D" uid="uid://ducf316lrttnv" path="res://assets/world/Tilesets/Floor.png" id="32_wljb1"]
 [ext_resource type="Script" uid="uid://dvcdadcgalx5e" path="res://scripts/follow.gd" id="33_v2yb1"]
 [ext_resource type="Texture2D" uid="uid://sds3vqsixo55" path="res://assets/character/knight/JumpAttack (1).png" id="51_o8oq8"]
 [ext_resource type="Texture2D" uid="uid://dgjxgnqayokfc" path="res://assets/character/knight/JumpAttack (2).png" id="52_sxt1d"]
@@ -80,80 +79,6 @@ shader = ExtResource("5_pf7vy")
 [sub_resource type="LabelSettings" id="LabelSettings_ostoq"]
 font_size = 32
 font_color = Color(0.8627451, 0.80784315, 0.23529412, 1)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v2yb1"]
-texture = ExtResource("32_wljb1")
-0:0/size_in_atlas = Vector2i(8, 8)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57.952637, 64, -58.328964, 64, 64, -64, 64)
-8:0/size_in_atlas = Vector2i(8, 8)
-8:0/0 = 0
-8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57.952637, 64, -58.328964, 64, 64, -64, 64)
-16:0/size_in_atlas = Vector2i(8, 8)
-16:0/next_alternative_id = 2
-16:0/0 = 0
-16:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57.952637, 64, -58.328964, 64, 64, -64, 64)
-24:0/size_in_atlas = Vector2i(8, 8)
-24:0/0 = 0
-24:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64.18733, -63.360878, 64.18732, -62.25895, 65.84022, 64.462814, -66.94215, 65.56474)
-32:0/size_in_atlas = Vector2i(8, 8)
-32:0/next_alternative_id = 4
-32:0/0 = 0
-32:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64.18733, -63.360878, 64.18732, -62.25895, 65.84022, 64.462814, -66.94215, 65.56474)
-32:0/1 = 1
-32:0/1/flip_h = true
-32:0/2 = 2
-32:0/2/flip_v = true
-32:0/3 = 3
-32:0/3/transpose = true
-40:0/size_in_atlas = Vector2i(8, 8)
-40:0/0 = 0
-40:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64.18733, -63.360878, 64.18732, -62.25895, 65.84022, 64.462814, -66.94215, 65.56474)
-40:8/size_in_atlas = Vector2i(8, 8)
-40:8/0 = 0
-0:8/size_in_atlas = Vector2i(8, 8)
-0:8/next_alternative_id = 2
-0:8/0 = 0
-0:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64.18733, -63.360878, 64.18732, -62.25895, 65.84022, 64.462814, -66.94215, 65.56474)
-0:8/1 = 1
-8:8/size_in_atlas = Vector2i(8, 8)
-8:8/0 = 0
-8:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57.952637, 64, -58.328964, 64, 64, -64, 64)
-16:8/size_in_atlas = Vector2i(8, 8)
-16:8/0 = 0
-16:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57.952637, 64, -58.328964, 64, 64, -64, 64)
-24:8/size_in_atlas = Vector2i(8, 8)
-24:8/next_alternative_id = 3
-24:8/0 = 0
-24:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64.18733, -63.360878, 64.18732, -62.25895, 65.84022, 64.462814, -66.94215, 65.56474)
-24:8/1 = 1
-24:8/1/flip_v = true
-8:17/size_in_atlas = Vector2i(8, 7)
-8:17/0 = 0
-8:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -48.54475, -64, -48.168427, -64, 38.007904, -26.153957, 32.739483, 3.1986847, 39.513165, 38.57238, 32.739483, 64, 39.136856, 64, -23.331573)
-16:17/size_in_atlas = Vector2i(8, 7)
-16:17/0 = 0
-16:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -48.064392, -64, -48.168427, -64, 38.007904, -36.126312, 39.889496, -1.1289368, 24.46054, 19.944733, 0.3763275, 51.178955, -4.1394653, 64, -23.331573)
-24:16/size_in_atlas = Vector2i(8, 8)
-24:16/0 = 0
-24:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64.18733, -63.360878, 64.18732, -62.25895, 65.84022, 64.462814, -66.94215, 65.56474)
-32:16/size_in_atlas = Vector2i(8, 8)
-32:16/0 = 0
-32:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64.18733, -63.360878, 64.18732, -62.25895, 65.84022, 64.462814, -66.94215, 65.56474)
-40:16/size_in_atlas = Vector2i(8, 8)
-40:16/0 = 0
-40:16/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64.18733, -63.360878, 64.18732, -62.25895, 65.84022, 64.462814, -66.94215, 65.56474)
-32:8/size_in_atlas = Vector2i(8, 7)
-32:8/0 = 0
-0:17/size_in_atlas = Vector2i(8, 7)
-0:17/next_alternative_id = 2
-0:17/0 = 0
-0:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-60.586853, -49.29738, 64, -48.168427, 64, 38.007904, 36.126312, 39.889496, 1.1289368, 24.46054, -19.944733, 0.3763275, -51.178955, -4.1394653, -64, -23.331573)
-
-[sub_resource type="TileSet" id="TileSet_ajtct"]
-tile_size = Vector2i(128, 128)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_v2yb1")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5newe"]
 atlas = ExtResource("2_lbhrr")
@@ -425,7 +350,7 @@ script = ExtResource("2_7gkqi")
 [node name="Level" type="Node2D" parent="." unique_id=246386792 node_paths=PackedStringArray("spawn")]
 script = ExtResource("1_js0lu")
 platforms = Array[PackedScene]([ExtResource("2_8qswn"), ExtResource("3_rm0al"), ExtResource("4_i4re6")])
-spawn = NodePath("World/Spawn")
+spawn = NodePath("")
 
 [node name="Background" type="CanvasLayer" parent="Level" unique_id=1284140728]
 layer = -4
@@ -460,13 +385,6 @@ label_settings = SubResource("LabelSettings_ostoq")
 position = Vector2(0, -1)
 script = ExtResource("2_oaba0")
 metadata/_edit_group_ = true
-
-[node name="Spawn" type="Node2D" parent="Level/World" unique_id=907154694]
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Level/World/Spawn" unique_id=1962223536]
-position = Vector2(-2, 2)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 1, 0, 0, 0, 0, 0, 8, 0, 17, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 17, 0, 0, 0, 3, 0, 0, 0, 0, 0, 16, 0, 17, 0, 0, 0)
-tile_set = SubResource("TileSet_ajtct")
 
 [node name="plat_01" parent="Level/World" unique_id=1967754518 instance=ExtResource("2_8qswn")]
 visible = false

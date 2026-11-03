@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var level_config: Node = get_node("..")
 @export var SPEED: float = 1000.0
 @export var JUMP_VELOCITY: float = -2500.0
 @export var HEALTH: int = 1
@@ -12,11 +13,31 @@ var attack_animation: String = "" # to prevent multiple attack animations at onc
 
 @onready var animated_sprite = $AnimatedSprite2D
 
+var active_effects: Array[bool]
 var base_hitbox_position: Vector2
 var base_up_direction: Vector2
 var gravity_coefficient: float
 
+func _on_elixir_activated(elixir_type: int) -> void:
+	active_effects[elixir_type] = not active_effects[elixir_type]
+	
+	if elixir_type == 0:
+		if active_effects[elixir_type]:
+			JUMP_VELOCITY *= level_config.jump_elixir_factor
+		else:
+			JUMP_VELOCITY /= level_config.jump_elixir_factor
+	elif elixir_type == 1:
+		if active_effects[elixir_type]:
+			SPEED *= level_config.movement_elixir_factor
+		else:
+			SPEED /= level_config.movement_elixir_factor
+	elif elixir_type == 2:
+		up_direction.y *= -1
+
 func _ready() -> void:
+	active_effects.resize(level_config.ElixirType.values().size())
+	active_effects.fill(false)
+	
 	last_safe_y = global_position.y
 	
 	base_up_direction = up_direction
@@ -25,7 +46,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#print(global_position)
 	
-	gravity_coefficient = $"..".gravity_coefficient
+	gravity_coefficient = level_config.gravity_coefficient
 	if not (base_up_direction == up_direction):
 		onGravityFlipped()
 	$CollisionShape2D.position.y = base_hitbox_position.y
