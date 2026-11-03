@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 			attack_animation = "player attack"
 		else:
 			attack_animation = "player jump_attack"
-
+	
 		animated_sprite.play(attack_animation)
 	
 	move_and_slide()
@@ -61,15 +61,12 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		last_safe_y = global_position.y
 	
-	if global_position.y > last_safe_y + DEATH_FALL_DISTANCE:
-		HEALTH = 0
-	
-	"""if up_direction == Vector2.UP:
+	if up_direction == Vector2.UP:
 		if global_position.y / (last_safe_y + DEATH_FALL_DISTANCE) > 1:
 			HEALTH = 0
 	else:
 		if global_position.y / (last_safe_y - DEATH_FALL_DISTANCE) > 1:
-			HEALTH = 0"""
+			HEALTH = 0
 	
 #	Handles the players death.
 	if HEALTH <= 0:

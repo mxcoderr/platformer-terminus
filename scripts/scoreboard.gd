@@ -7,6 +7,7 @@ extends Control
 @onready var show_btn: Button = $UI/NewScoreGroup/ContinueNewScore
 @onready var rows: VBoxContainer = $UI/ShowScoreGroup/VBoxContainer/Rows
 @onready var name_label: Label = $UI/NewScoreGroup/NameLabelNewScore
+@onready var show_main: Button = $UI/ShowScoreGroup/ContinueShowScore
 
 func _ready():
 	if GameManager.player_died:
@@ -16,6 +17,8 @@ func _ready():
 		
 	score_label.text = "Score: " + str(ScoreManager.get_score())
 	show_btn.pressed.connect(_on_show)
+	show_main.pressed.connect(_on_continue)
+	
 	ScoreManager.highscore_table_changed.connect(_refresh)
 	_show_new_score()
 
@@ -34,6 +37,10 @@ func _on_show():
 		player_name = "Anonym"
 	ScoreManager.submit_score(player_name)
 	_show_table()
+
+func _on_continue():
+	visible = false
+	get_parent().show_menu()
 
 func _refresh():
 	for child in rows.get_children():

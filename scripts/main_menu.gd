@@ -19,10 +19,10 @@ func _ready():
 	$UI/MainGroup/MenuButtons/Credits.pressed.connect(func(): _show_group(credits_group))
 	$UI/MainGroup/MenuButtons/QuitGame.pressed.connect(func(): get_tree().quit())
 
-	$UI/NewGameGroup/BackNewGame.pressed.connect(_show_menu)
+	$UI/NewGameGroup/BackNewGame.pressed.connect(show_menu)
 	$UI/NewGameGroup/StartNewGame.pressed.connect(_on_start)
 	
-	$UI/CreditsGroup/BackCredits.pressed.connect(_show_menu)
+	$UI/CreditsGroup/BackCredits.pressed.connect(show_menu)
 
 func _show_group(group: Control):
 	_hide_all_groups()
@@ -30,7 +30,7 @@ func _show_group(group: Control):
 	group.visible = true
 	active_group = group
 
-func _show_menu():
+func show_menu():
 	_hide_all_groups()
 	menu_buttons.visible = true
 	active_group = null
@@ -46,4 +46,5 @@ func _on_start():
 		GameManager.current_seed = randi()
 	else:
 		GameManager.current_seed = seed_text.to_int()
+	ScoreManager.reset_score()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
