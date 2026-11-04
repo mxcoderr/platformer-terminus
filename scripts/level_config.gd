@@ -26,6 +26,5 @@ var max_elixir_duration = 10	# maximal amount of platforms where elixir should b
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#SoundManager.play_bgm(preload("res://assets/sounds/background_music.mp3"))
 	var player = $Player
 	player.apply_config(self)

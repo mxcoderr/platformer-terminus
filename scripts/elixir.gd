@@ -1,5 +1,7 @@
 extends Area2D
 
+const ELIXIR_SFX := preload("res://assets/sounds/potion_pickup.mp3")
+
 signal collected(type: int)
 
 @export var game_world: Node2D
@@ -23,7 +25,7 @@ func initialize(givenType: LevelConfig.ElixirType):
 		$Texture.modulate = Color.BLUE
 
 func _on_body_entered(_body: Node2D) -> void:
-	SoundManager.play_elixir()
+	SoundManager.play_elixir(ELIXIR_SFX)
 	collected.emit(type)
 	
 	if idle_tween:

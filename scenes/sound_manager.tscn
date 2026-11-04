@@ -12,16 +12,20 @@ script = ExtResource("1_s6peo")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1622861804]
 stream = ExtResource("2_shlr6")
-volume_db = -10.0
+bus = &"Music"
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="." unique_id=687986530]
 stream = ExtResource("3_shlr6")
+bus = &"Attack"
 
 [node name="ElixirSound" type="AudioStreamPlayer" parent="." unique_id=1290125927]
 stream = ExtResource("4_v1pt3")
+bus = &"Elixir"
 
 [node name="CoinSound" type="AudioStreamPlayer" parent="." unique_id=870131305]
 stream = ExtResource("5_mpi5b")
+bus = &"Coin"
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=15250786]
 stream = ExtResource("6_aa63w")
+bus = &"Jump"

@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+const JUMP_SFX := preload("res://assets/sounds/jump.mp3")
+const ATTACK_SFX := preload("res://assets/sounds/attack_hit.mp3")
+
 @onready var level_config: Node = get_node("..")
 @export var SPEED: float = 1000.0
 @export var JUMP_VELOCITY: float = -2500.0
@@ -63,7 +66,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		SoundManager.play_jump()
+		SoundManager.play_jump(JUMP_SFX)
 		
 	if direction:
 		velocity.x = direction * SPEED
@@ -148,7 +151,7 @@ func _on_attack_hit(body):
 		body.take_damage(1)
 
 func _start_attack():
-	SoundManager.play_attack()
+	SoundManager.play_attack(ATTACK_SFX)
 	attack = true
 	attack_hitbox.monitoring = true
 	

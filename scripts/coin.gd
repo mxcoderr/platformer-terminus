@@ -1,13 +1,15 @@
 extends Area2D
 class_name Coin
 
+const COIN_SFX := preload("res://assets/sounds/coin_pickup.mp3")
+
 var animatedSprite: AnimatedSprite2D
 
 func _ready() -> void:
 	animatedSprite = $"Sprite"
 
 func _on_body_entered(_body: Node2D) -> void:
-	SoundManager.play_coin()
+	SoundManager.play_coin(COIN_SFX)
 	set_deferred("monitoring", false)
 	ScoreManager.score(self)
 	

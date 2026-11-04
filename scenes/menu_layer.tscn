@@ -235,11 +235,112 @@ theme_override_font_sizes/font_size = 40
 text = "Start"
 
 [node name="SettingsGroup" type="Control" parent="MainMenu/UI" unique_id=1019995739]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Volume" type="Label" parent="MainMenu/UI/SettingsGroup" unique_id=793681912]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.37
+anchor_right = 0.5
+anchor_bottom = 0.37
+offset_left = -22.0
+offset_top = -11.5
+offset_right = 22.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 34
+text = "Volume"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenu/UI/SettingsGroup" unique_id=1006079817]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.52
+anchor_right = 0.52
+anchor_bottom = 0.52
+offset_left = -61.5
+offset_top = -65.5
+offset_right = 61.5
+offset_bottom = 65.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundMusicLabel" type="Label" parent="MainMenu/UI/SettingsGroup/VBoxContainer2" unique_id=7456655]
+layout_mode = 2
+text = "Music"
+
+[node name="SwordSwingLabel" type="Label" parent="MainMenu/UI/SettingsGroup/VBoxContainer2" unique_id=1636699837]
+layout_mode = 2
+text = "Sword Swing"
+
+[node name="JumpLabel" type="Label" parent="MainMenu/UI/SettingsGroup/VBoxContainer2" unique_id=666296579]
+layout_mode = 2
+text = "Jump"
+
+[node name="CoinLabel" type="Label" parent="MainMenu/UI/SettingsGroup/VBoxContainer2" unique_id=229119160]
+layout_mode = 2
+text = "Coin Pickup"
+
+[node name="ElixirLabel" type="Label" parent="MainMenu/UI/SettingsGroup/VBoxContainer2" unique_id=1686044178]
+layout_mode = 2
+text = "Elixir Pickup"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/UI/SettingsGroup" unique_id=386020630]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.6
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -50.0
+offset_right = 4.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.35, 1.35)
+
+[node name="BackgroundMusicSlider" type="HSlider" parent="MainMenu/UI/SettingsGroup/VBoxContainer" unique_id=196543109]
+layout_mode = 2
+
+[node name="SwordSwingSlider" type="HSlider" parent="MainMenu/UI/SettingsGroup/VBoxContainer" unique_id=44661987]
+layout_mode = 2
+
+[node name="JumpSlider" type="HSlider" parent="MainMenu/UI/SettingsGroup/VBoxContainer" unique_id=189700860]
+layout_mode = 2
+
+[node name="CoinSlider" type="HSlider" parent="MainMenu/UI/SettingsGroup/VBoxContainer" unique_id=1459242848]
+layout_mode = 2
+
+[node name="ElixirSlider" type="HSlider" parent="MainMenu/UI/SettingsGroup/VBoxContainer" unique_id=1637595763]
+layout_mode = 2
+
+[node name="BackSettings" type="Button" parent="MainMenu/UI/SettingsGroup" unique_id=569795217]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.875
+anchor_right = 0.5
+anchor_bottom = 0.875
+offset_left = -80.0
+offset_top = -22.5
+offset_right = 80.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Back"
 
 [node name="CreditsGroup" type="Control" parent="MainMenu/UI" unique_id=22763527]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -305,9 +406,9 @@ anchor_top = 0.35
 anchor_right = 0.75
 anchor_bottom = 0.35
 offset_left = -209.99994
-offset_top = 43.399994
+offset_top = 43.40001
 offset_right = 90.00006
-offset_bottom = 196.92996
+offset_bottom = 196.92998
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_3x338")
@@ -319,9 +420,9 @@ horizontal_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3
-anchor_top = 0.7
+anchor_top = 0.75
 anchor_right = 0.3
-anchor_bottom = 0.7
+anchor_bottom = 0.75
 offset_left = -41.5
 offset_top = -11.5
 offset_right = 41.5
@@ -334,14 +435,14 @@ text = "User Interface"
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.35
-anchor_top = 0.67
-anchor_right = 0.35
-anchor_bottom = 0.67
-offset_left = -210.0
-offset_top = 33.53
-offset_right = 90.0
-offset_bottom = 196.93
+anchor_left = 0.3
+anchor_top = 0.9
+anchor_right = 0.3
+anchor_bottom = 0.9
+offset_left = -150.0
+offset_top = -81.7
+offset_right = 150.0
+offset_bottom = 81.7
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_1yg85")
@@ -352,9 +453,9 @@ horizontal_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.7
-anchor_top = 0.7
+anchor_top = 0.75
 anchor_right = 0.7
-anchor_bottom = 0.7
+anchor_bottom = 0.75
 offset_left = -20.0
 offset_top = -11.5
 offset_right = 20.0
@@ -368,9 +469,9 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.85
-anchor_top = 0.45
+anchor_top = 0.5
 anchor_right = 0.85
-anchor_bottom = 0.45
+anchor_bottom = 1.45
 offset_left = -315.0
 offset_top = 176.538
 offset_right = -15.0
@@ -381,6 +482,44 @@ theme = SubResource("Theme_vgxg3")
 text = "Mountains of Christmas by Tart Workshop, Version 2.0"
 horizontal_alignment = 1
 
+[node name="SoundCredits" type="Label" parent="MainMenu/UI/CreditsGroup" unique_id=906845042]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -11.5
+offset_right = 53.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music and Sounds"
+
+[node name="SoundInfo" type="RichTextLabel" parent="MainMenu/UI/CreditsGroup" unique_id=395480731]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 0.5
+anchor_bottom = 0.65
+offset_left = -150.0
+offset_top = -81.7
+offset_right = 150.0
+offset_bottom = 81.7
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_vgxg3")
+text = "Music: The Console of my Dreams by DJARTMUSIC
+Coin: Retro Video Game Coin Pickup by SRJA_Gaming
+Jump: Retro Jump 2 by Driken5482
+Potion: Potion Drink 3 by Yodguard
+Attack Animation: Slash by 666HeroHero
+"
+horizontal_alignment = 1
+
 [node name="BackCredits" type="Button" parent="MainMenu/UI/CreditsGroup" unique_id=76106229]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 1
@@ -389,16 +528,17 @@ anchor_left = 0.5
 anchor_top = 0.875
 anchor_right = 0.5
 anchor_bottom = 0.875
-offset_left = -18.0
-offset_top = -15.5
-offset_right = 18.0
-offset_bottom = 15.5
+offset_left = -80.0
+offset_top = -22.5
+offset_right = 80.0
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Back"
 
 [node name="Scoreboard" type="Control" parent="MainMenu" unique_id=1605695461]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
