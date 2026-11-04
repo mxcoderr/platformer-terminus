@@ -62,6 +62,7 @@ func take_damage(amount: int) -> void:
 		_die()
 
 func _die() -> void:
+	ScoreManager.score(self)
 	zombie_sprite.play("dead")
 	var tween = create_tween()
 	
@@ -73,5 +74,4 @@ func _die() -> void:
 	tween.tween_property(self, "modulate:a", 0, 1)
 	
 	tween.set_parallel(false)
-	tween.tween_callback(queue_free)
-	
+	tween.tween_callback(queue_free)	

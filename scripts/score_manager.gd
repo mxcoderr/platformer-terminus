@@ -25,6 +25,10 @@ func score(obj):
 		_score += 1
 		score_changed.emit(_score)
 		coins_changed.emit(_coins)
+	
+	if obj.get_script().get_global_name() == "Zombie":
+		_score += 3
+		score_changed.emit(_score)
 
 func get_coins() -> int:
 	return _coins
