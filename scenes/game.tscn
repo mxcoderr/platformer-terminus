@@ -333,6 +333,10 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ostoq"]
+a = Vector2(524, 40)
+b = Vector2(264, 152)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ostoq"]
 radius = 148.0
 height = 524.0
@@ -347,10 +351,9 @@ script = ExtResource("1_2iuns")
 unique_name_in_owner = true
 script = ExtResource("2_7gkqi")
 
-[node name="Level" type="Node2D" parent="." unique_id=246386792 node_paths=PackedStringArray("spawn")]
+[node name="Level" type="Node2D" parent="." unique_id=246386792]
 script = ExtResource("1_js0lu")
 platforms = Array[PackedScene]([ExtResource("2_8qswn"), ExtResource("3_rm0al"), ExtResource("4_i4re6")])
-spawn = NodePath("")
 
 [node name="Background" type="CanvasLayer" parent="Level" unique_id=1284140728]
 layer = -4
@@ -407,7 +410,13 @@ metadata/_edit_group_ = true
 sprite_frames = SubResource("SpriteFrames_ostoq")
 animation = &"player death"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player" unique_id=817580666]
+[node name="AttackHitbox" type="Area2D" parent="Level/Player" unique_id=1629539599]
+collision_layer = 8
+
+[node name="AttackCollision" type="CollisionShape2D" parent="Level/Player/AttackHitbox" unique_id=398317352]
+shape = SubResource("SegmentShape2D_ostoq")
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="Level/Player" unique_id=817580666]
 position = Vector2(-8, 54)
 shape = SubResource("CapsuleShape2D_ostoq")
 

@@ -18,7 +18,7 @@ var jump_elixir_factor = 1.2
 var movement_elixir_factor = 1.3
 
 var coin_chance = 0.3
-var zombie_chance = 0.05
+var zombie_chance = 0.2
 var elixir_chance = 0.5
 
 var min_elixir_duration = 5		# minimal amount of platforms where elixir should be active

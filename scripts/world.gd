@@ -17,6 +17,8 @@ var current_plat_length: int
 
 func _ready() -> void:
 	rng.seed = GameManager.current_seed
+	if GameManager.DEBUG:
+		print("Seed: " + str(rng.seed))
 	
 	active_elixirs.resize(level_config.ElixirType.values().size())
 	active_elixirs.fill(false)
@@ -39,8 +41,8 @@ func _process(_delta):
 			if child.position.x < player.position.x - 4096:
 				child.queue_free()
 
-"""Generates one platform
-pos: Vector2 - explicit position of the next platform"""
+# Generates one platform
+# pos: Vector2 - explicit position of the next platform
 func generate_platform(pos: Variant = null):
 	for i in placed_elixirs.size():
 		if not (placed_elixirs[i] == -1):
@@ -62,7 +64,7 @@ func generate_platform(pos: Variant = null):
 			direction_y = rng.randf_range(level_config.min_vertical, level_config.max_vertical) * level_config.tile_size
 
 		var max_x: float = max(level_config.min_horizontal, level_config.max_horizontal - abs(direction_y) / level_config.tile_size)
-		var direction_x: float = rng.randi_range(level_config.min_horizontal, max_x) * level_config.tile_size
+		var direction_x: float = rng.randf_range(level_config.min_horizontal, max_x) * level_config.tile_size
 		
 		plat.position = last_pos + Vector2(direction_x, direction_y)
 
@@ -92,7 +94,7 @@ func generate_placeables(plat):
 			var elixir = ELIXIR.instantiate()
 			elixir.initialize(elixir_type)
 			elixir.collected.connect(player._on_elixir_activated)
-			elixir.position = Vector2(current_plat_length / 2, -60)
+			elixir.position = Vector2(current_plat_length / 2.0, -60.0)
 			
 			plat.add_child(elixir)
 			
@@ -109,7 +111,7 @@ func generate_placeables(plat):
 	
 	if die < coin_threshold:
 		var coin = COIN.instantiate()
-		coin.position = Vector2(current_plat_length / 2, -60)
+		coin.position = Vector2(current_plat_length / 2.0, -60.0)
 		plat.add_child(coin)
 	elif die < zombie_threshold:
 		var zombie
@@ -118,7 +120,7 @@ func generate_placeables(plat):
 		else:
 			zombie = ZOMBIE_FEMALE.instantiate()
 		zombie.gravity_coefficient = bool_to_sign(gravity)
-		zombie.position = Vector2(current_plat_length / 2, -60)
+		zombie.position = Vector2(current_plat_length / 2.0, -60.0)
 		zombie.apply_config(player)
 		plat.add_child(zombie)
 	elif die < elixir_threshold:
@@ -130,7 +132,7 @@ func generate_placeables(plat):
 			var elixir = ELIXIR.instantiate()
 			elixir.initialize(elixir_type)
 			elixir.collected.connect(player._on_elixir_activated)
-			elixir.position = Vector2(current_plat_length / 2, -60)
+			elixir.position = Vector2(current_plat_length / 2.0, -60.0)
 			
 			plat.add_child(elixir)
 			

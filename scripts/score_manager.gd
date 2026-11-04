@@ -12,7 +12,8 @@ const SAVE_PATH := "user://highscores.json"
 const MAX_ENTRIES := 5
 
 func _ready():
-	print("ScoreManager is active")
+	if GameManager.DEBUG:
+		print("ScoreManager is active")
 	_load()
 
 func _exit_tree():

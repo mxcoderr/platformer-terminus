@@ -12,6 +12,7 @@ var last_safe_y: float = 0.0
 var attack_animation: String = "" # to prevent multiple attack animations at once
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var attack_hitbox: Area2D = $AttackHitbox
 
 var active_effects: Array[bool]
 var base_hitbox_position: Vector2
@@ -35,21 +36,22 @@ func _on_elixir_activated(elixir_type: int) -> void:
 		up_direction.y *= -1
 
 func _ready() -> void:
+	attack_hitbox.monitoring = false
+	attack_hitbox.body_entered.connect(_on_attack_hit)
+	
 	active_effects.resize(level_config.ElixirType.values().size())
 	active_effects.fill(false)
 	
 	last_safe_y = global_position.y
 	
 	base_up_direction = up_direction
-	base_hitbox_position = $CollisionShape2D.position
+	base_hitbox_position = $PlayerCollision.position
 
 func _physics_process(delta: float) -> void:
-	#print(global_position)
-	
 	gravity_coefficient = level_config.gravity_coefficient
 	if not (base_up_direction == up_direction):
 		onGravityFlipped()
-	$CollisionShape2D.position.y = base_hitbox_position.y
+	$PlayerCollision.position.y = base_hitbox_position.y
 	
 	var direction := Input.get_axis("move_left", "move_right")
 
@@ -68,14 +70,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	if not attack and Input.is_action_just_pressed("attack"):
-		attack = true
-		
-		if is_on_floor():
-			attack_animation = "player attack"
-		else:
-			attack_animation = "player jump_attack"
-	
-		animated_sprite.play(attack_animation)
+		_start_attack()
 	
 	move_and_slide()
 	
@@ -84,9 +79,13 @@ func _physics_process(delta: float) -> void:
 	
 	if up_direction == Vector2.UP:
 		if global_position.y - last_safe_y > DEATH_FALL_DISTANCE:
+			if GameManager.DEBUG_PLAYER:
+				print("FALL DEATH: y=", global_position.y, " last_safe_y=", last_safe_y)
 			HEALTH = 0
 	else:
 		if last_safe_y - global_position.y > DEATH_FALL_DISTANCE:
+			if GameManager.DEBUG_PLAYER:
+				print("FALL DEATH (FLIP): y=", global_position.y, " last_safe_y=", last_safe_y)
 			HEALTH = 0
 	
 #	Handles the players death.
@@ -124,6 +123,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "player attack" or animated_sprite.animation == "player jump_attack":
 		attack = false
 		attack_animation = ""
+		attack_hitbox.monitoring = false
 
 func apply_config(config) -> void:
 	gravity_coefficient = config.gravity_coefficient
@@ -135,5 +135,24 @@ func onGravityFlipped():
 	base_up_direction = up_direction
 
 func _on_death():
+	if GameManager.DEBUG_PLAYER:
+		print("DIED! HEALTH=", HEALTH, " y=", global_position.y, " last_safe_y=", last_safe_y)
 	GameManager.player_died = true
 	get_tree().change_scene_to_file("res://scenes/menu_layer.tscn")
+
+func _on_attack_hit(body):
+	if body is Zombie:
+		if GameManager.DEBUG_ZOMBIE:
+			print("Zombie hit: ", body.name)
+		body.take_damage(1)
+
+func _start_attack():
+	attack = true
+	attack_hitbox.monitoring = true
+	
+	if is_on_floor():
+		attack_animation = "player attack"
+	else:
+		attack_animation = "player jump_attack"
+	
+	animated_sprite.play(attack_animation)
