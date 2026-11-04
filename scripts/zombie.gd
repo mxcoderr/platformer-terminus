@@ -18,6 +18,15 @@ func _ready() -> void:
 	floor_checker = $FloorChecker
 	if gravity_coefficient < 0:
 		floor_checker.position.x *= -1
+	if GameManager.DEBUG_ZOMBIE:
+		print("Zombie: ", self.name)
+		print("  visible: ", visible)
+		print("  position: ", global_position)
+		print("  sprite: ", zombie_sprite)
+		print("  sprite visible: ", zombie_sprite.visible)
+		print("  sprite position: ", zombie_sprite.position)
+		print("  animation: ", zombie_sprite.animation)
+		print("  player position: ", player.global_position)
 
 func _physics_process(delta: float) -> void:
 	velocity += get_gravity() * gravity_coefficient * delta
@@ -43,8 +52,8 @@ func apply_config(player_node: CharacterBody2D) -> void:
 
 func _on_collision_body_entered(body: Node2D) -> void:
 	if body == player:
-		if GameManager.DEBUG:
-			print("Player dies to zombie.")
+		if GameManager.DEBUG_ZOMBIE:
+			print("Player dies to zombie: " + self.name)
 		body.HEALTH -= 1
 
 func take_damage(amount: int) -> void:
@@ -53,4 +62,17 @@ func take_damage(amount: int) -> void:
 		_die()
 
 func _die() -> void:
-	queue_free()
+	zombie_sprite.play("dead")
+	
+	var tween = create_tween()
+	
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	
+	tween.tween_property(self, "position", self.position + Vector2(0, -300), 1)
+	tween.tween_property(self, "modulate:a", 0, 1)
+	
+	tween.set_parallel(false)
+	tween.tween_callback(queue_free)
+	

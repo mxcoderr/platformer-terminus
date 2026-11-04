@@ -79,12 +79,12 @@ func _physics_process(delta: float) -> void:
 	
 	if up_direction == Vector2.UP:
 		if global_position.y - last_safe_y > DEATH_FALL_DISTANCE:
-			if GameManager.DEBUG:
+			if GameManager.DEBUG_PLAYER:
 				print("FALL DEATH: y=", global_position.y, " last_safe_y=", last_safe_y)
 			HEALTH = 0
 	else:
 		if last_safe_y - global_position.y > DEATH_FALL_DISTANCE:
-			if GameManager.DEBUG:
+			if GameManager.DEBUG_PLAYER:
 				print("FALL DEATH (FLIP): y=", global_position.y, " last_safe_y=", last_safe_y)
 			HEALTH = 0
 	
@@ -135,14 +135,14 @@ func onGravityFlipped():
 	base_up_direction = up_direction
 
 func _on_death():
-	if GameManager.DEBUG:
+	if GameManager.DEBUG_PLAYER:
 		print("DIED! HEALTH=", HEALTH, " y=", global_position.y, " last_safe_y=", last_safe_y)
 	GameManager.player_died = true
 	get_tree().change_scene_to_file("res://scenes/menu_layer.tscn")
 
 func _on_attack_hit(body):
 	if body is Zombie:
-		if GameManager.DEBUG:
+		if GameManager.DEBUG_ZOMBIE:
 			print("Zombie hit: ", body.name)
 		body.take_damage(1)
 
