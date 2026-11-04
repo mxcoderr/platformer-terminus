@@ -18,8 +18,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ScoreManager="*uid://ceqprewuvdr0w"
-GameManager="*uid://qxb1ss5q3106"
+GameManager="*uid://1gx23rx61qsm"
+SoundManager="*uid://tftc71uxvvs"
+ScoreManager="*uid://cwh2p4yoik4xq"
 
 [display]
 

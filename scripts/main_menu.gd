@@ -8,6 +8,8 @@ extends Control
 var active_group: Control = null
 
 func _ready():
+	#SoundManager.play_bgm(preload("res://assets/sounds/background_music.mp3"))
+	
 	_hide_all_groups()
 	
 	if GameManager.player_died:

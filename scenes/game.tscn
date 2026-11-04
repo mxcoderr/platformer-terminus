@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://c6rv6midg2lo2"]
 
-[ext_resource type="Script" uid="uid://ceqprewuvdr0w" path="res://scripts/score_manager.gd" id="1_2iuns"]
 [ext_resource type="Script" uid="uid://xl3q5jkes7m" path="res://scripts/level_config.gd" id="1_js0lu"]
 [ext_resource type="Script" uid="uid://cy8l80hgm5cjq" path="res://scripts/player.gd" id="1_lnu2h"]
-[ext_resource type="Script" uid="uid://qxb1ss5q3106" path="res://scripts/game_manager.gd" id="2_7gkqi"]
 [ext_resource type="PackedScene" uid="uid://dut8a2cpg2syr" path="res://scenes/plat_01.tscn" id="2_8qswn"]
 [ext_resource type="Texture2D" uid="uid://cndy2vntdp8pa" path="res://assets/character/knight/Idle (1).png" id="2_lbhrr"]
 [ext_resource type="Script" uid="uid://bdsh6ncbihau0" path="res://scripts/world.gd" id="2_oaba0"]
@@ -342,14 +340,6 @@ radius = 148.0
 height = 524.0
 
 [node name="Game" type="Node2D" unique_id=650088776]
-
-[node name="ScoreManager" type="Node" parent="." unique_id=135517712]
-unique_name_in_owner = true
-script = ExtResource("1_2iuns")
-
-[node name="GameManager" type="Node" parent="." unique_id=1873271553]
-unique_name_in_owner = true
-script = ExtResource("2_7gkqi")
 
 [node name="Level" type="Node2D" parent="." unique_id=246386792]
 script = ExtResource("1_js0lu")

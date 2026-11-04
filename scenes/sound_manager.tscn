@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://tftc71uxvvs"]
+
+[ext_resource type="Script" uid="uid://dfbe4w1ellix7" path="res://scripts/sound_manager.gd" id="1_s6peo"]
+[ext_resource type="AudioStream" uid="uid://0fkx8v2hx6ei" path="res://assets/sounds/background_music.mp3" id="2_shlr6"]
+[ext_resource type="AudioStream" uid="uid://c4f60n7nye5fx" path="res://assets/sounds/attack_hit.mp3" id="3_shlr6"]
+[ext_resource type="AudioStream" uid="uid://bovpgdltojcvw" path="res://assets/sounds/potion_pickup.mp3" id="4_v1pt3"]
+[ext_resource type="AudioStream" uid="uid://dnfiuxa7lewvg" path="res://assets/sounds/coin_pickup.mp3" id="5_mpi5b"]
+[ext_resource type="AudioStream" uid="uid://ovj4llhpmps" path="res://assets/sounds/jump.mp3" id="6_aa63w"]
+
+[node name="SoundManager" type="Node" unique_id=432473509]
+script = ExtResource("1_s6peo")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1622861804]
+stream = ExtResource("2_shlr6")
+volume_db = -10.0
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="." unique_id=687986530]
+stream = ExtResource("3_shlr6")
+
+[node name="ElixirSound" type="AudioStreamPlayer" parent="." unique_id=1290125927]
+stream = ExtResource("4_v1pt3")
+
+[node name="CoinSound" type="AudioStreamPlayer" parent="." unique_id=870131305]
+stream = ExtResource("5_mpi5b")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=15250786]
+stream = ExtResource("6_aa63w")
