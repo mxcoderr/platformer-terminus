@@ -13,15 +13,32 @@ Label/colors/font_shadow_color = Color(0, 0, 0, 0.5019608)
 Label/constants/outline_size = 9
 Label/constants/shadow_outline_size = 21
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jx84c"]
+texture = ExtResource("4_1xi03")
+region_rect = Rect2(300, 285, 401, 174)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6tjpr"]
+texture = ExtResource("4_1xi03")
+region_rect = Rect2(300, 285, 401, 174)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4u377"]
+texture = ExtResource("4_1xi03")
+region_rect = Rect2(744, 285, 401, 174)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1xi03"]
+content_margin_left = 30.0
+texture = ExtResource("4_1xi03")
+region_rect = Rect2(1187, 285, 401, 174)
+
 [sub_resource type="Theme" id="Theme_2gnni"]
 default_font = ExtResource("1_iogn2")
+Button/styles/hover = SubResource("StyleBoxTexture_jx84c")
+Button/styles/normal = SubResource("StyleBoxTexture_6tjpr")
+Button/styles/pressed = SubResource("StyleBoxTexture_4u377")
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.47058824)
 Label/constants/outline_size = 4
 Label/constants/shadow_outline_size = 5
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cd141"]
-texture = ExtResource("4_1xi03")
-region_rect = Rect2(297, 283, 406, 176)
+LineEdit/styles/normal = SubResource("StyleBoxTexture_1xi03")
 
 [sub_resource type="Theme" id="Theme_753oq"]
 default_font = ExtResource("4_cd141")
@@ -126,7 +143,6 @@ grow_vertical = 2
 [node name="NewGame" type="Button" parent="MainMenu/UI/MainGroup/MenuButtons" unique_id=209535602]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxTexture_cd141")
 text = "New Game"
 
 [node name="Settings" type="Button" parent="MainMenu/UI/MainGroup/MenuButtons" unique_id=1515375077]
