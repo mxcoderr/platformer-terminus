@@ -17,6 +17,8 @@ var current_plat_length: int
 
 func _ready() -> void:
 	rng.seed = GameManager.current_seed
+	if GameManager.DEBUG:
+		print("Seed: " + str(rng.seed))
 	
 	active_elixirs.resize(level_config.ElixirType.values().size())
 	active_elixirs.fill(false)
@@ -39,8 +41,8 @@ func _process(_delta):
 			if child.position.x < player.position.x - 4096:
 				child.queue_free()
 
-"""Generates one platform
-pos: Vector2 - explicit position of the next platform"""
+# Generates one platform
+# pos: Vector2 - explicit position of the next platform
 func generate_platform(pos: Variant = null):
 	for i in placed_elixirs.size():
 		if not (placed_elixirs[i] == -1):

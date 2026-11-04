@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://cb33ik2ptgycv" path="res://assets/font/Mountains_of_Christmas/MountainsofChristmas-Bold.ttf" id="1_iogn2"]
 [ext_resource type="Script" uid="uid://c0e7r0u2l7yk2" path="res://scripts/main_menu.gd" id="2_vcqiu"]
 [ext_resource type="Texture2D" uid="uid://bqqg1mlnlo0ng" path="res://assets/world/BG/BG.png" id="3_1xi03"]
+[ext_resource type="Texture2D" uid="uid://ujpu15fffd5e" path="res://assets/ui/Button.png" id="4_1xi03"]
 [ext_resource type="FontFile" uid="uid://c8fnjv8fxdist" path="res://assets/font/Mountains_of_Christmas/MountainsofChristmas-Regular.ttf" id="4_cd141"]
 [ext_resource type="Script" uid="uid://fint6uolgrxx" path="res://scripts/scoreboard.gd" id="5_vcqiu"]
 
@@ -19,6 +20,8 @@ Label/constants/outline_size = 4
 Label/constants/shadow_outline_size = 5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cd141"]
+texture = ExtResource("4_1xi03")
+region_rect = Rect2(297, 283, 406, 176)
 
 [sub_resource type="Theme" id="Theme_753oq"]
 default_font = ExtResource("4_cd141")
@@ -99,21 +102,24 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MainGroup" type="Control" parent="MainMenu/UI" unique_id=415226409]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MenuButtons" type="VBoxContainer" parent="MainMenu/UI/MainGroup" unique_id=1244589017]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.545
+anchor_top = 0.6
 anchor_right = 0.5
-anchor_bottom = 0.612
-offset_left = 476.0
-offset_top = 219.068
-offset_right = 636.0
-offset_bottom = 484.38797
+anchor_bottom = 0.6
+offset_left = -100.0
+offset_top = -150.0
+offset_right = 100.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 

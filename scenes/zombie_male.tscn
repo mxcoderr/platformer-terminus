@@ -215,6 +215,7 @@ height = 415.0
 
 [node name="zombie_male" type="CharacterBody2D" unique_id=2139390734]
 scale = Vector2(0.6, 0.6)
+collision_mask = 9
 script = ExtResource("1_i6wqh")
 metadata/_edit_group_ = true
 

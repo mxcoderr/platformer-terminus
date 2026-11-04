@@ -1,10 +1,12 @@
 extends CharacterBody2D
+class_name Zombie
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED: float = 300.0
+const JUMP_VELOCITY: float = -400.0
 
-var direction = 1.0
-var attacking = false
+var health: int = 1
+var direction: float = 1.0
+var attacking: bool = false
 var player: CharacterBody2D
 
 @onready var zombie_sprite = find_child("zombie_*_sprite", true, false)
@@ -41,4 +43,14 @@ func apply_config(player_node: CharacterBody2D) -> void:
 
 func _on_collision_body_entered(body: Node2D) -> void:
 	if body == player:
+		if GameManager.DEBUG:
+			print("Player dies to zombie.")
 		body.HEALTH -= 1
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		_die()
+
+func _die() -> void:
+	queue_free()
