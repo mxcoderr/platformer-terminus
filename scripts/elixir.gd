@@ -25,7 +25,7 @@ func initialize(givenType: LevelConfig.ElixirType):
 		$Texture.modulate = Color.BLUE
 
 func _on_body_entered(_body: Node2D) -> void:
-	SoundManager.play_elixir(ELIXIR_SFX)
+	SoundManager.play_elixir()
 	collected.emit(type)
 	
 	if idle_tween:

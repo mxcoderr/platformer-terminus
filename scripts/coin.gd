@@ -9,7 +9,7 @@ func _ready() -> void:
 	animatedSprite = $"Sprite"
 
 func _on_body_entered(_body: Node2D) -> void:
-	SoundManager.play_coin(COIN_SFX)
+	SoundManager.play_coin()
 	set_deferred("monitoring", false)
 	ScoreManager.score(self)
 	

@@ -14,19 +14,28 @@ const SAVE_PATH := "user://settings.json"
 @onready var coin: AudioStreamPlayer = $CoinSound
 @onready var jump: AudioStreamPlayer = $JumpSound
 
+const BGM_SFX = preload("res://assets/sounds/background_music.mp3")
+const ATTACK_SFX = preload("res://assets/sounds/attack_hit.mp3")
+const ELIXIR_SFX = preload("res://assets/sounds/potion_pickup.mp3")
+const COIN_SFX = preload("res://assets/sounds/coin_pickup.mp3")
+const JUMP_SFX = preload("res://assets/sounds/jump.mp3")
+ 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if GameManager.DEBUG:
 		print("SoundManager is active.")
 	
 	load_settings()
+	for p in [attack, elixir, coin, jump]:
+		p.play()      # kurz abspielen (läuft ein Frame)
+		p.stop()      # sofort stoppen – Decoder ist jetzt “warm”
+		
+	bgm.stream = BGM_SFX
+	coin.stream   = COIN_SFX
+	jump.stream   = JUMP_SFX
+	attack.stream = ATTACK_SFX
+	elixir.stream = ELIXIR_SFX
 	
-	# Warmup audio to reduce delay	
-	var warmup := AudioStreamWAV.new()
-	for player in [attack, elixir, coin, jump]:
-		player.stream = warmup
-		player.play()
-		player.stop()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,20 +43,16 @@ func _process(_delta: float) -> void:
 	if bgm.playing == false:
 		bgm.play()
 
-func play_attack(stream: AudioStream) -> void:
-	attack.stream = stream
+func play_attack() -> void:
 	attack.play()
 
-func play_elixir(stream: AudioStream) -> void:
-	elixir.stream = stream
+func play_elixir() -> void:
 	elixir.play()
 
-func play_coin(stream: AudioStream) -> void:
-	coin.stream = stream
+func play_coin() -> void:
 	coin.play()
 
-func play_jump(stream: AudioStream) -> void:
-	jump.stream = stream
+func play_jump() -> void:
 	jump.play()
 
 func set_music_volume(percent: float) -> void:
