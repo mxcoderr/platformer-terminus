@@ -379,15 +379,6 @@ position = Vector2(0, -1)
 script = ExtResource("2_oaba0")
 metadata/_edit_group_ = true
 
-[node name="plat_01" parent="Level/World" unique_id=1967754518 instance=ExtResource("2_8qswn")]
-visible = false
-
-[node name="plat_02" parent="Level/World" unique_id=1996705055 instance=ExtResource("3_rm0al")]
-visible = false
-
-[node name="plat_03" parent="Level/World" unique_id=1563764343 instance=ExtResource("4_i4re6")]
-visible = false
-
 [node name="Player" type="CharacterBody2D" parent="Level" unique_id=734645926]
 unique_name_in_owner = true
 position = Vector2(140, -160)

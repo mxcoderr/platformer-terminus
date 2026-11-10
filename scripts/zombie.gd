@@ -64,6 +64,9 @@ func take_damage(amount: int) -> void:
 func _die() -> void:
 	ScoreManager.score(self)
 	zombie_sprite.play("dead")
+	$"Collision".monitoring = false
+	$"CollisionShape2D".set_deferred("disabled", true)
+
 	var tween = create_tween()
 	
 	tween.set_parallel(true)
