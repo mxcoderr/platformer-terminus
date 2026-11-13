@@ -26,9 +26,6 @@ func _ready() -> void:
 		print("SoundManager is active.")
 	
 	load_settings()
-	for p in [attack, elixir, coin, jump]:
-		p.play()      # kurz abspielen (läuft ein Frame)
-		p.stop()      # sofort stoppen – Decoder ist jetzt “warm”
 		
 	bgm.stream = BGM_SFX
 	coin.stream   = COIN_SFX
